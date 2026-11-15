@@ -1,6 +1,0 @@
-{
-  "name": "Vortex - Academic Operating System",
-  "description": "Vortex is a modern Academic Operating System featuring an Academic Command Center, coursework progress tracking, task prioritizer, Assignments Hub, Quizzes system, Grades analytics, Schedule agenda, personalized Student Notification Center, Admin Moderation Inbox, and Student Profile & System Settings.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}

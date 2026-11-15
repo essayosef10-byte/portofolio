@@ -1,8 +1,0 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "com.fontebeampharma.fieldcrm",
-        "sha256_cert_fingerprints": ["82:C5:64:8F:E8:23:C1:9E:64:3C:FA:B8:C3:87:86:37:F5:33:D1:98:19:B0:12:09:AC:63:E8:4E:D3:7B:EA:49"]
-      }
-    }]
