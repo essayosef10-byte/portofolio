@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vortex-Madar • AI Audio & Slide Companion (Live Demo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body { font-family: 'Cairo', sans-serif; background-color: #FAF8FD; color: #0F172A; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  
+  <!-- Floating Portfolio Navigation Bar -->
+  <div id="demo-floating-banner" class="fixed top-0 left-0 right-0 z-50 bg-purple-950 text-white px-4 py-2.5 shadow-md flex items-center justify-between text-xs font-sans border-b border-white/10">
+    <div class="flex items-center gap-2.5">
+      <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-[10px]">
+        <i class="fa-solid fa-play"></i>
+      </span>
+      <span class="font-bold">Live Standalone Demo:</span>
+      <span class="text-purple-300 font-black">Vortex-Madar (AI Audio & Slide Processing Engine)</span>
+      <span class="text-white/40 hidden sm:inline">•</span>
+      <span class="text-slate-300 hidden sm:inline">Built by Yousef Eissa (Joey)</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="../../index.html" class="px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold transition-all flex items-center gap-1.5 border border-white/20">
+        <i class="fa-solid fa-arrow-left text-[10px]"></i>
+        <span>Back to Portfolio</span>
+      </a>
+      <button onclick="document.getElementById('demo-floating-banner').style.display='none'" class="w-6 h-6 rounded-md hover:bg-white/10 flex items-center justify-center text-slate-400 hover:text-white" title="Hide Banner">
+        <i class="fa-solid fa-xmark text-xs"></i>
+      </button>
+    </div>
+  </div>
+  <div class="h-10"></div>
+    
+
+  <header class="bg-white/95 backdrop-blur-md border-b border-purple-200/80 sticky top-10 z-40 px-4 sm:px-8 py-3.5 shadow-xs">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-700 to-indigo-600 flex items-center justify-center font-black text-white shadow-xs">
+          <i class="fa-solid fa-microphone-lines text-lg"></i>
+        </div>
+        <div>
+          <span class="font-black text-slate-900 text-lg tracking-tight font-sans">Vortex-Madar</span>
+          <span class="text-[10px] text-purple-700 block font-bold">مساعد المحاضرات الذكي • Groq STT + FFmpeg + PDF-Parse</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 text-xs font-bold">
+        <button onclick="switchTab('upload')" id="tab-btn-upload" class="px-4 py-2 rounded-xl bg-purple-700 text-white flex items-center gap-2 transition-all shadow-xs">
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+          <span>مساحة الرفع</span>
+        </button>
+        <button onclick="switchTab('transcript')" id="tab-btn-transcript" class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 flex items-center gap-2 transition-all">
+          <i class="fa-solid fa-waveform-lines text-purple-600"></i>
+          <span>المشغل والتفريغ</span>
+        </button>
+        <button onclick="switchTab('qa')" id="tab-btn-qa" class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 flex items-center gap-2 transition-all">
+          <i class="fa-solid fa-robot text-indigo-600"></i>
+          <span>اسأل المحاضرة بالـ AI</span>
+        </button>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <span class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
+          ● Groq Pipeline: Online
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-7xl mx-auto w-full p-4 sm:p-8 space-y-6">
+
+    <!-- TAB 1: UPLOAD -->
+    <div id="view-upload" class="space-y-6">
+      <div class="bg-gradient-to-r from-purple-500/10 via-indigo-500/5 to-white p-6 sm:p-8 rounded-3xl border border-purple-200/80 space-y-3">
+        <span class="text-xs font-bold text-purple-700 uppercase tracking-widest font-mono">// مساحة محاضرتك الذكية</span>
+        <h1 class="text-2xl sm:text-4xl font-black text-slate-900">خلّي المحاضرة <em>واضحة ومفهرسة</em></h1>
+        <p class="text-xs sm:text-sm text-slate-600 font-medium">ارفع تسجيل الصوت وشرائح الـ PDF، وVortex-Madar يفرغ الصوت ويوصل كل فكرة بالصفحة المناسبة في ثوانٍ معدودة.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="p-8 rounded-3xl border-2 border-dashed border-purple-300 bg-white hover:bg-purple-50/50 transition-colors flex flex-col items-center justify-center text-center space-y-3 cursor-pointer">
+          <div class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-2xl">
+            <i class="fa-solid fa-file-audio"></i>
+          </div>
+          <div>
+            <div class="text-sm font-bold text-slate-900">ملف التسجيل الصوتي (Audio)</div>
+            <div class="text-xs text-slate-500 mt-1">MP3, M4A, WAV, WebM (يدعم حتى 200 MB)</div>
+          </div>
+          <span class="px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
+            ✓ تم رفع: CS402_Lec14_Audio.mp3 (42 MB)
+          </span>
+        </div>
+
+        <div class="p-8 rounded-3xl border-2 border-dashed border-indigo-300 bg-white hover:bg-indigo-50/50 transition-colors flex flex-col items-center justify-center text-center space-y-3 cursor-pointer">
+          <div class="w-14 h-14 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-2xl">
+            <i class="fa-solid fa-file-pdf"></i>
+          </div>
+          <div>
+            <div class="text-sm font-bold text-slate-900">شرائح المحاضرة (PDF Slides)</div>
+            <div class="text-xs text-slate-500 mt-1">Presentation Deck مع استخراج النصوص تلقائياً</div>
+          </div>
+          <span class="px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
+            ✓ تم فهرسة: Lec14_Microservices.pdf (24 شريحة)
+          </span>
+        </div>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-white border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+            <i class="fa-solid fa-check text-base"></i>
+          </div>
+          <div class="text-xs">
+            <strong class="text-slate-900 block font-bold text-sm">اكتملت المعالجة بنجاح عبر Groq Whisper & FFmpeg:</strong>
+            <span class="text-slate-500">تم تفريغ 45 دقيقة صوت في 3.8 ثوانٍ • استخراج نصوص 24 صفحة سلايد بدقة 99.2%</span>
+          </div>
+        </div>
+        <button onclick="switchTab('transcript')" class="px-5 py-2.5 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs shadow-xs transition-all flex items-center gap-2 shrink-0">
+          <span>فتح المشغل والتفريغ النصي</span>
+          <i class="fa-solid fa-arrow-left text-[10px]"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB 2: TRANSCRIPT -->
+    <div id="view-transcript" class="hidden space-y-6">
+      <div class="bg-white p-5 rounded-2xl border border-purple-200 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <button onclick="toggleAudio()" class="w-12 h-12 rounded-xl bg-purple-700 hover:bg-purple-800 text-white flex items-center justify-center text-lg shadow-xs transition-all">
+            <i id="audio-icon" class="fa-solid fa-play ml-0.5"></i>
+          </button>
+          <div>
+            <div class="text-sm font-bold text-slate-900">المحاضرة 14: معمارية الـ Microservices والـ Saga Pattern</div>
+            <div class="text-xs text-slate-500 font-mono" id="audio-timer">الوقت الحالي: 04:18 / 45:00 • د. سامي عبد الحميد</div>
+          </div>
+        </div>
+
+        <div class="flex items-end gap-1.5 h-9 px-4 py-1.5 bg-purple-50 rounded-xl border border-purple-100" id="audio-waveform">
+          <div class="w-1.5 bg-purple-600 rounded-full h-3"></div>
+          <div class="w-1.5 bg-purple-600 rounded-full h-5"></div>
+          <div class="w-1.5 bg-purple-600 rounded-full h-8"></div>
+          <div class="w-1.5 bg-purple-600 rounded-full h-4"></div>
+          <div class="w-1.5 bg-purple-600 rounded-full h-7"></div>
+          <div class="w-1.5 bg-purple-600 rounded-full h-9"></div>
+          <div class="w-1.5 bg-purple-600 rounded-full h-6"></div>
+          <div class="w-1.5 bg-purple-600 rounded-full h-4"></div>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-4">
+        <h3 class="text-sm font-black text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+          <i class="fa-solid fa-align-right text-purple-600"></i>
+          <span>التفريغ النصي المتزامن (انقر على أي توقيت للانتقال إليه)</span>
+        </h3>
+
+        <div class="space-y-3">
+          <div onclick="seekAudio('00:15')" class="p-3.5 rounded-xl border border-slate-200 hover:border-purple-300 bg-slate-50/60 cursor-pointer space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 rounded bg-purple-100 text-purple-800 font-mono text-[10px] font-bold">⏱ 00:15</span>
+              <span class="text-[10px] text-slate-400">شريحة 1: المقدمة</span>
+            </div>
+            <p class="text-xs text-slate-700 leading-relaxed font-medium">"السلام عليكم يا شباب، النهاردة هنكمل كلامنا عن أسباب تحول كبرى الشركات العالمية من Monolithic Architecture لنظام الـ Microservices..."</p>
+          </div>
+
+          <div onclick="seekAudio('02:40')" class="p-3.5 rounded-xl border border-purple-300 bg-purple-50/70 cursor-pointer space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 rounded bg-purple-700 text-white font-mono text-[10px] font-bold">⏱ 02:40 (الفقرة الحالية)</span>
+              <span class="text-[10px] text-purple-700 font-bold">شريحة 4: Independent Deployability</span>
+            </div>
+            <p class="text-xs text-slate-900 leading-relaxed font-bold">"أهم ميزة محورية لازم تفهموها هي الـ Independent Deployability؛ يعني لو فريق الـ Payments عمل تحديث لكود بوابات الدفع، يقدر يرفعه للإنتاج بدون ما يعطل باقي أقسام الموقع."</p>
+          </div>
+
+          <div onclick="seekAudio('05:12')" class="p-3.5 rounded-xl border border-slate-200 hover:border-purple-300 bg-slate-50/60 cursor-pointer space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 rounded bg-purple-100 text-purple-800 font-mono text-[10px] font-bold">⏱ 05:12</span>
+              <span class="text-[10px] text-slate-400">شريحة 6: Distributed Data Management</span>
+            </div>
+            <p class="text-xs text-slate-700 leading-relaxed font-medium">"لكن التحدي الأكبر دايماً بيظهر في إدارة قواعد البيانات الموزعة؛ لأن كل خدمة عندها داتابيز خاصة بيها، ولذلك بنلجأ لنمط الساجا (Saga Pattern)..."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: QA -->
+    <div id="view-qa" class="hidden space-y-6">
+      <div class="bg-white p-6 rounded-2xl border border-purple-200 shadow-xs space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-lg">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+            <div>
+              <h2 class="text-base font-black text-slate-900">اسأل المحاضرة (AI RAG Engine)</h2>
+              <p class="text-xs text-slate-500 font-medium">إجابات دقيقة مبنية حصراً على ما قاله الدكتور في التسجيل الصوتي وشرايح الـ PDF مع أرقام الصفحات والتوقيتات</p>
+            </div>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-purple-50 text-purple-700 border border-purple-200 text-xs font-bold">
+            Zero Hallucination Mode
+          </span>
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          <button onclick="askMadar('حل قواعد البيانات الموزعة')" class="px-3.5 py-2 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 border border-purple-200 text-xs font-bold transition-all shadow-2xs">
+            ما هو الحل المقترح لتحدي قواعد البيانات الموزعة؟
+          </button>
+          <button onclick="askMadar('Independent Deployability')" class="px-3.5 py-2 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 border border-purple-200 text-xs font-bold transition-all shadow-2xs">
+            ما هي ميزة الـ Independent Deployability؟
+          </button>
+        </div>
+
+        <div id="madar-output" class="p-5 rounded-2xl bg-slate-50 border border-purple-200 text-xs text-slate-700 leading-relaxed space-y-2">
+          <div class="text-purple-800 font-bold flex items-center gap-2">
+            <i class="fa-solid fa-quote-right text-purple-600"></i>
+            <span>إجابة المساعد المعتمدة على المحاضرة:</span>
+          </div>
+          <p class="text-slate-700 font-medium leading-relaxed">
+            وفقاً للتسجيل الصوتي في التوقيت <strong>[05:12]</strong> وشريحة العرض <strong>(الصفحة 6)</strong>: <br/>
+            أوضح الدكتور أن تطبيق الـ Two-Phase Commit التقليدي يسبب بطئاً شديداً، والحل المعياري الموصى به هو تطبيق <strong>نمط الساجا (Saga Pattern)</strong> لإدارة المعاملات الموزعة عبر أحداث غير متزامنة لضمان الاتساق النهائي.
+          </p>
+          <div class="pt-2 border-t border-purple-100 flex items-center gap-4 text-[11px] text-purple-700 font-mono font-bold">
+            <span>📍 التوقيت الدقيق: 05:12</span>
+            <span>📄 رقم الشريحة: Slide 6 / 24</span>
+            <span>🔍 الدقة: 99.4%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function switchTab(tabId) {
+      ['upload', 'transcript', 'qa'].forEach(id => {
+        document.getElementById(`view-${id}`).classList.add('hidden');
+        const btn = document.getElementById(`tab-btn-${id}`);
+        btn.classList.remove('bg-purple-700', 'text-white');
+        btn.classList.add('bg-white', 'text-slate-700');
+      });
+
+      document.getElementById(`view-${tabId}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+      activeBtn.classList.remove('bg-white', 'text-slate-700');
+      activeBtn.classList.add('bg-purple-700', 'text-white');
+    }
+
+    let isAudioPlaying = false;
+    function toggleAudio() {
+      isAudioPlaying = !isAudioPlaying;
+      const icon = document.getElementById('audio-icon');
+      const waveform = document.getElementById('audio-waveform');
+      if (isAudioPlaying) {
+        icon.className = 'fa-solid fa-pause';
+        waveform.querySelectorAll('div').forEach((b, i) => {
+          b.style.animation = `pulse 0.7s infinite ease-in-out ${i * 0.08}s alternate`;
+        });
+      } else {
+        icon.className = 'fa-solid fa-play ml-0.5';
+        waveform.querySelectorAll('div').forEach(b => {
+          b.style.animation = 'none';
+        });
+      }
+    }
+
+    function seekAudio(t) {
+      document.getElementById('audio-timer').innerText = `الوقت الحالي: ${t} / 45:00 • د. سامي عبد الحميد`;
+      if (!isAudioPlaying) toggleAudio();
+    }
+
+    function askMadar(q) {
+      const out = document.getElementById('madar-output');
+      out.innerHTML = `<div class="text-purple-700 font-bold"><i class="fa-solid fa-spinner fa-spin ml-2"></i> جاري فحص التسجيل الصوتي والشريحة لسؤال: "${q}"...</div>`;
+      setTimeout(() => {
+        out.innerHTML = `
+          <div class="text-purple-800 font-bold flex items-center gap-2">
+            <i class="fa-solid fa-quote-right text-purple-600"></i>
+            <span>إجابة المساعد المعتمدة على المحاضرة:</span>
+          </div>
+          <p class="text-slate-700 font-medium leading-relaxed">
+            وفقاً لما جاء في المحاضرة وشريحة العرض: <br/>
+            ${q.includes('Independent') ? 
+              'ميزة Independent Deployability تعني أن كل فريق مايكروسيرفس مستقل تماماً في دورة حياة الـ CI/CD، مما يمنع تعطل النظام ككل عند ترقية جزء معين.' :
+              'الحل المعتمد هو نمط الساجا (Saga Pattern) لإدارة المعاملات الموزعة مع Eventual Consistency لتجنب بطء بروتوكولات Two-Phase Commit.'}
+          </p>
+          <div class="pt-2 border-t border-purple-100 flex items-center gap-3 text-[11px] text-purple-700 font-mono font-bold">
+            <span>📍 التوقيت المستشهد به: 02:40</span>
+            <span>📄 الشريحة: Slide 4</span>
+          </div>
+        `;
+      }, 500);
+    }
+  </script>
+</body>
+</html>

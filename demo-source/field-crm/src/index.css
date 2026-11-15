@@ -1,0 +1,1605 @@
+/* ============================================
+   Field CRM — Design Tokens & Base Styles
+   (نسخة مدموجة: الأساسي الأصلي + هوية Fonte Beam)
+   ============================================ */
+
+:root {
+  /* ---- الأساسيات الأصلية (بدون تغيير) ---- */
+  --ink: #12203D;
+  --paper: #F5F3EE;
+  --card: #FFFFFF;
+  --line: #E4E0D6;
+
+  --true: #12806F;
+  --true-bg: #E4F3EF;
+
+  --false: #C1443B;
+  --false-dark: #A8382F;
+  --false-bg: #FBE8E6;
+
+  --amber: #C98A2C;
+  --amber-bg: #FBF0DD;
+  --amber-dark: #92400E;
+
+  --radius-card: 16px;
+  --shadow-card: 0 1px 2px rgba(18, 32, 61, 0.05), 0 8px 24px rgba(18, 32, 61, 0.06);
+
+  /* ---- NEW: هوية العلامة — كحلي ---- */
+  --brand-ink: #12203D;
+  --brand-ink-light: #1C2F52;
+  --brand-ink-dark: #0B1526;
+
+  /* ---- NEW: هوية العلامة — ذهبي ---- */
+  --brand-gold: #E8A324;
+  --brand-gold-light: #F6C665;
+  --brand-gold-dark: #B87F1E;
+
+  /* ---- NEW: أزرق تمييز اختياري ---- */
+  --accent-blue: #2E9AC9;
+  --accent-blue-light: #E9F6FB;
+  --accent-blue-dark: #1C7195;
+
+  /* ---- NEW: تدرجات جاهزة ---- */
+  --gradient-brand: linear-gradient(135deg, var(--brand-ink) 0%, var(--brand-ink-light) 100%);
+  --gradient-gold: linear-gradient(135deg, var(--brand-gold-dark) 0%, var(--brand-gold) 55%, var(--brand-gold-light) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent-blue-dark) 0%, var(--accent-blue) 100%);
+
+  /* ---- NEW: ظلال موحّدة ---- */
+  --shadow-sm: 0 1px 2px rgba(18, 32, 61, 0.06), 0 1px 1px rgba(18, 32, 61, 0.04);
+  --shadow-md: 0 4px 12px rgba(18, 32, 61, 0.08), 0 2px 4px rgba(18, 32, 61, 0.05);
+  --shadow-lg: 0 12px 28px rgba(18, 32, 61, 0.14), 0 4px 10px rgba(18, 32, 61, 0.08);
+  --shadow-xl: 0 24px 48px rgba(18, 32, 61, 0.16), 0 8px 16px rgba(18, 32, 61, 0.08);
+  --shadow-gold-glow: 0 0 24px rgba(232, 163, 36, 0.35);
+
+  /* ---- NEW: سرعة الحركة الموحّدة ---- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 150ms var(--ease-standard);
+  --transition-base: 200ms var(--ease-standard);
+  --transition-slow: 250ms var(--ease-standard);
+
+  /* ============================================
+     NEW: نظام المسافات (8px spacing system)
+     ============================================ */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 40px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* ============================================
+     NEW: تدرّج الخطوط (Typography scale)
+     ============================================ */
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 15px;
+  --text-md: 16px;
+  --text-lg: 19px;
+  --text-xl: 23px;
+  --text-2xl: 28px;
+  --text-3xl: 34px;
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  /* ============================================
+     NEW: زوايا الاستدارة (Radius scale)
+     ============================================ */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-pill: 999px;
+
+  /* ---- NEW: نص ثانوي (تباين أفضل من قبل) ---- */
+  --muted: #5B6472;
+  --muted-light: #8A93A3;
+
+  /* ---- NEW: أبيض موحّد + رمادي محايد (بديل لقيم #fff/#EDEDED المكررة يدويًا في صفحات مختلفة) ---- */
+  --white: #FFFFFF;
+  --neutral-bg: #EDEEF1;
+
+  /* ---- NEW: تفاعل خفيف على الأسطح ---- */
+  --surface-hover: rgba(18, 32, 61, 0.045);
+  --surface-active: rgba(18, 32, 61, 0.07);
+  --overlay-scrim: rgba(18, 32, 61, 0.45);
+
+  /* ---- NEW: الحد الأدنى لارتفاع العناصر القابلة للنقر (Accessibility) ---- */
+  --tap-target-min: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-base: 0ms;
+    --transition-slow: 0ms;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  direction: rtl;
+  text-align: right;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: "Cairo", "Segoe UI", Tahoma, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 8px 0;
+  font-weight: var(--font-bold);
+  color: var(--ink);
+  line-height: var(--leading-tight);
+}
+
+h1 {
+  font-size: var(--text-2xl);
+  letter-spacing: -0.01em;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  inset-inline-start: 0;
+  width: 30px;
+  height: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-gold);
+}
+
+h2 { font-size: var(--text-xl); letter-spacing: -0.005em; }
+h3 { font-size: var(--text-lg); }
+h4, h5, h6 { font-size: var(--text-md); }
+
+p {
+  margin: 0 0 12px 0;
+  line-height: var(--leading-normal);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+/* ============================================
+   NEW: هرمية نصية إضافية (section titles / captions / muted)
+   استخدام اختياري — لا تُغيّر أي عنصر إلا لو اتحطّت الكلاس عليه
+   ============================================ */
+
+.section-title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.text-body {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--ink);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.caption {
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+  color: var(--muted-light);
+}
+
+/* ============================================
+   Cards
+   ============================================ */
+
+.card {
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 20px;
+}
+
+/* ============================================
+   NEW: رأس صفحة موحّد (Signature page header)
+   يستخدم في كل صفحة بدل ما كل صفحة تبني الهيدر بشكلها الخاص —
+   عنوان كبير + subtitle + خط ذهبي تحت الأيقونة كتوقيع بصري للبراند.
+   ============================================ */
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-5);
+}
+
+.page-header__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-brand);
+  color: var(--brand-gold-light);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.page-header__titles {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.page-header h1 {
+  margin-bottom: 0;
+}
+
+.page-header__subtitle {
+  color: var(--muted);
+  font-size: var(--text-base);
+  margin: var(--space-2) 0 0;
+}
+
+.page-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   NEW: شبكة إحصائيات موحّدة (Stat cards)
+   بديل بصري أرقى لصفوف الـ badges البسيطة (زي rep-dashboard__summary)،
+   لسه بنفس المنطق: كل عنصر رقم + تسمية، من غير أي تغيير في الداتا.
+   ============================================ */
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 16px var(--space-4);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--stat-accent, var(--ink));
+}
+
+.stat-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.stat-card--total { --stat-accent: var(--brand-gold); }
+.stat-card--true { --stat-accent: var(--true); }
+.stat-card--false { --stat-accent: var(--false); }
+.stat-card--pending { --stat-accent: var(--muted-light); }
+
+.stat-card__value {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-extrabold);
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.stat-card__icon {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--stat-accent, var(--muted));
+}
+
+.stat-card__label {
+  display: block;
+  margin-top: 6px;
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================
+   NEW: حالة فارغة موحّدة (Empty state)
+   بديل بصري لعبارات نصية بسيطة زي <p>مفيش بيانات</p> —
+   نفس المنطق الشرطي بتاع كل صفحة، بس بشكل أرقى.
+   ============================================ */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-2);
+  padding: var(--space-6) var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--line);
+  background-color: rgba(18, 32, 61, 0.015);
+}
+
+.empty-state__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--paper);
+  color: var(--muted-light);
+  margin-bottom: var(--space-1);
+}
+
+.empty-state__title {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--ink);
+  margin: 0;
+}
+
+.empty-state__hint {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin: 0;
+  max-width: 32ch;
+}
+
+/* ============================================
+   NEW: حاوية صفحة موحّدة (اختياري)
+   بديل جاهز لتوحيد الـ padding/max-width عبر الصفحات، هيتم
+   تطبيقه صفحة بصفحة بدل ما نغيّر كل صفحة دفعة واحدة دلوقتي.
+   ============================================ */
+
+.page {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-4) var(--space-7);
+  box-sizing: border-box;
+}
+
+.page--narrow {
+  max-width: 640px;
+}
+
+/* ============================================
+   NEW: تنسيق موحّد لشريط التمرير (Webkit + Firefox)
+   ============================================ */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--line);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--paper);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--muted-light);
+}
+
+/* ============================================
+   NEW: رابط "تخطي إلى المحتوى" (Accessibility)
+   مخفي بصريًا لغاية ما يتفوكس بالكيبورد (Tab الأول)
+   ============================================ */
+
+.skip-link {
+  position: absolute;
+  top: -48px;
+  inset-inline-start: var(--space-3);
+  z-index: 1000;
+  background: var(--ink);
+  color: var(--white);
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-3);
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  min-height: var(--tap-target-min);
+  padding: 12px 16px;
+  margin-top: 16px;
+  background: var(--gradient-brand);
+  border: none;
+  border-color: transparent;
+  color: var(--white);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--brand-ink-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0) scale(0.99);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---- NEW: حالة تحميل اختيارية للأزرار (spinner + نص باهت) ----
+   الاستخدام: أضف الكلاس is-loading على أي زر من عائلة الأزرار دي.
+   الزر بيفضل بنفس المكان والمقاس، من غير ما يتغير أي منطق JS. */
+.btn-primary.is-loading,
+.btn-outline.is-loading,
+.btn-danger.is-loading,
+.visit-btn--primary.is-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.btn-primary.is-loading::after,
+.btn-outline.is-loading::after,
+.btn-danger.is-loading::after,
+.visit-btn--primary.is-loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-inline-end-color: transparent;
+  color: inherit;
+  animation: btn-spin 0.7s linear infinite;
+}
+
+.btn-primary.is-loading::after,
+.visit-btn--primary.is-loading::after {
+  color: var(--white);
+}
+
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+.btn-logout {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--tap-target-min);
+  padding: 8px 16px;
+  background-color: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+}
+
+.btn-logout:hover {
+  background-color: var(--paper);
+  transform: scale(1.015);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---- NEW: تعريف أساسي موحّد لـ .btn-outline ----
+   ملحوظة: الكلاس ده كان معرّف جزئيًا بس (hover/focus) في الملف ده،
+   وكل صفحة كانت بتعيد تعريفه بنفسها بشكل مكرر (RepAddDoctor،
+   RepCoverage، AdminRepAccounts، AdminApprovals، RepDashboard) —
+   وده خلّى صفحة "تحديد موقع دكتور" (Map) من غير أي شكل للزر أصلاً
+   لأنها مفيش عندها نسخة خاصة. التعريف الأساسي هنا بيسد الفجوة دي
+   فورًا، وهيتم تنظيف التكرار في كل صفحة لما نوصلها بالترتيب. */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--tap-target-min);
+  padding: 10px 18px;
+  background-color: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+}
+
+.btn-outline:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-outline--danger {
+  color: var(--false);
+  border-color: var(--false-bg);
+}
+
+/* ---- NEW: زر خطر مصمت (Danger) ---- */
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--tap-target-min);
+  padding: 10px 18px;
+  background-color: var(--false);
+  border: 1px solid var(--false);
+  color: var(--white);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: var(--false-dark);
+  border-color: var(--false-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-danger:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.btn-danger:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ---- NEW: زر شبح (Ghost) — بدون حدود أو خلفية ---- */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--tap-target-min);
+  padding: 10px 16px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: var(--ink);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background-color: var(--surface-hover);
+}
+
+.btn-ghost:active:not(:disabled) {
+  background-color: var(--surface-active);
+}
+
+.btn-ghost:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary,
+.btn-outline,
+.btn-danger,
+.btn-ghost,
+.btn-logout,
+.week-submit-bar__btn,
+.modal-list__item {
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-fast);
+}
+
+.btn-outline:hover:not(:disabled),
+.modal-list__item:hover:not(:disabled) {
+  transform: scale(1.015);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-outline:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.btn-outline--danger:hover:not(:disabled) {
+  background: var(--false-bg);
+  border-color: var(--false);
+  color: var(--false);
+}
+
+.btn-primary:focus-visible,
+.btn-outline:focus-visible,
+.btn-danger:focus-visible,
+.btn-ghost:focus-visible,
+.btn-logout:focus-visible,
+.topbar-nav__link:focus-visible,
+.field-input:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+  transition: outline-color var(--transition-fast);
+}
+
+/* ============================================
+   Status colors (true / false / amber)
+   ============================================ */
+
+.tag-true {
+  color: var(--true);
+  background-color: var(--true-bg);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.tag-false {
+  color: var(--false);
+  background-color: var(--false-bg);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.tag-amber {
+  color: var(--amber);
+  background-color: var(--amber-bg);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
+  flex-shrink: 0;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+/* ============================================
+   NEW: نظام شارات الحالة الموحّد (Status badges)
+   استخدام اختياري — بديل بصري أحدث لـ .tag-true / .tag-false /
+   .tag-amber جاهز للصفحات لما نيجي نظبطها واحدة واحدة، بدون
+   ما نغيّر أو نشيل الكلاسات القديمة دلوقتي.
+   ============================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  line-height: 1.6;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.badge--pending {
+  color: var(--amber-dark, var(--amber));
+  background-color: var(--amber-bg);
+}
+
+.badge--completed {
+  color: var(--true);
+  background-color: var(--true-bg);
+}
+
+.badge--mismatch {
+  color: var(--false);
+  background-color: var(--false-bg);
+}
+
+.badge--cancelled {
+  color: var(--muted);
+  background-color: var(--neutral-bg);
+}
+
+.badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   NEW: بادج عداد صغير محايد (كان معرّف في صفحة واحدة بس ومستخدم
+   في صفحة تانية من غير تعريف — دلوقتي مصدر واحد للكل)
+   ============================================ */
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  background-color: var(--paper);
+  border-radius: var(--radius-sm);
+  padding: 3px 10px;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   Alerts
+   ============================================ */
+
+.alert {
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.alert-error {
+  color: var(--false);
+  background-color: var(--false-bg);
+}
+
+/* تنبيه محايد — لنتيجة متوقعة (زي "مفيش بيانات في الفترة دي")،
+   مش خطأ فعلي، فمنستخدمش لون التحذير الأحمر المخصص للأخطاء الحقيقية */
+.alert-neutral {
+  color: var(--muted);
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+}
+
+/* ============================================
+   NEW: تنبيه تحذيري موحّد (مستخدم في أكتر من صفحة GPS —
+   RepVisit و RepSetDoctorLocation)
+   ============================================ */
+.alert-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: var(--amber-bg);
+  color: var(--amber-dark);
+  border: 1px solid var(--amber);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  margin: 6px 0 0;
+  text-align: start;
+}
+
+.alert-warning svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--amber);
+}
+
+/* ============================================
+   Form fields
+   ============================================ */
+
+.field-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--ink);
+  margin: var(--space-3) 0 6px 0;
+}
+
+.field-label__required {
+  color: var(--false);
+  margin-inline-start: 2px;
+}
+
+.field-input {
+  width: 100%;
+  min-height: var(--tap-target-min);
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  color: var(--ink);
+  background-color: var(--paper);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.field-input::placeholder {
+  color: var(--muted-light);
+}
+
+.field-input:focus {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(18, 32, 61, 0.08);
+}
+
+/* ---- NEW: حالة خطأ في الحقل + نص مساعد/خطأ (اختياري) ---- */
+.field-input--error {
+  border-color: var(--false);
+}
+
+.field-input--error:focus {
+  border-color: var(--false);
+  box-shadow: 0 0 0 3px rgba(193, 68, 59, 0.1);
+}
+
+.field-hint {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.field-error {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: var(--false);
+  margin-top: 4px;
+}
+
+/* ============================================
+   Login page
+   ============================================ */
+
+.login-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3);
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(232, 163, 36, 0.07), transparent 45%),
+    radial-gradient(circle at 85% 90%, rgba(18, 32, 61, 0.05), transparent 45%);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  padding: var(--space-5) var(--space-4);
+  box-shadow: var(--shadow-lg);
+  animation: login-card-enter 420ms var(--ease-standard);
+}
+
+@keyframes login-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .login-card {
+    animation: none;
+  }
+}
+
+.login-logo {
+  display: block;
+  height: 44px;
+  width: auto;
+  margin: 0 auto var(--space-3);
+  filter: drop-shadow(0 2px 6px rgba(18, 32, 61, 0.15));
+}
+
+.login-title {
+  text-align: center;
+  font-size: var(--text-xl);
+  margin-bottom: 2px;
+}
+
+.login-title::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.login-subtitle {
+  text-align: center;
+  color: var(--muted);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-4);
+}
+
+.login-field-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-field-icon svg {
+  position: absolute;
+  inset-inline-start: 14px;
+  color: var(--muted-light);
+  pointer-events: none;
+}
+
+.login-field-icon .field-input {
+  padding-inline-start: 42px;
+}
+
+/* ============================================
+   TopBar
+   ============================================ */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  padding: 12px var(--space-4);
+  box-shadow: 0 1px 0 rgba(18, 32, 61, 0.03);
+}
+
+.topbar::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  inset-inline: 0;
+  height: 2px;
+  background: var(--gradient-gold);
+  opacity: 0.9;
+}
+
+/* topbar-brand بقت حاوية flex للوجو + النص (بدل نص عادي) */
+.topbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.brand-mark {
+  height: 32px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(18, 32, 61, 0.15));
+  transition: transform var(--transition-base);
+}
+
+.brand-mark:hover {
+  transform: scale(1.04);
+}
+
+.brand-wordmark {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--brand-ink);
+  letter-spacing: 0.01em;
+}
+
+.brand-wordmark::after {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--brand-gold);
+  margin-inline-start: 8px;
+  vertical-align: middle;
+}
+
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.topbar-nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: var(--tap-target-min);
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base);
+}
+
+.topbar-nav__link svg {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.topbar-nav__link:hover {
+  background-color: var(--accent-blue-light);
+  color: var(--accent-blue-dark);
+}
+
+.topbar-nav__link--active {
+  background: var(--gradient-brand);
+  color: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.topbar-nav__link--active svg {
+  opacity: 1;
+}
+
+.topbar-nav__icon-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.topbar-nav__pending-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--false);
+  box-shadow: 0 0 0 1.5px var(--white);
+}
+
+.topbar-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* أفاتار دائري بحروف مبدئية — مشترك بين التوب بار وأي ليستة حسابات
+   (زي ليستة المناديب في صفحة إدارة الحسابات) بدل ما كل صفحة تعمل
+   نسخة منها. .avatar-badge--sm أصغر لاستخدامه جوه صفوف الليستات. */
+.avatar-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: var(--font-bold);
+  letter-spacing: 0.02em;
+  box-shadow: var(--shadow-sm);
+}
+
+.avatar-badge--sm {
+  width: 30px;
+  height: 30px;
+  font-size: 12px;
+}
+
+.topbar-user__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.3;
+}
+
+.topbar-user__role {
+  font-size: 11px;
+  font-weight: var(--font-medium);
+  color: var(--muted-light);
+}
+
+.topbar-username {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+@media (max-width: 480px) {
+  .topbar-user__role {
+    display: none;
+  }
+}
+
+/* ============================================
+   App-level loading / route guards
+   ============================================ */
+
+.app-loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ============================================
+   شاشة التحميل — اللوجو العائم (NEW)
+   ============================================ */
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 30% 20%, rgba(232, 163, 36, 0.08), transparent 55%),
+    radial-gradient(circle at 75% 80%, rgba(18, 32, 61, 0.06), transparent 50%);
+}
+
+.loading-logo-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-logo-glow {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 163, 36, 0.35) 0%, rgba(232, 163, 36, 0) 70%);
+  animation: loading-glow-pulse 2.6s ease-in-out infinite;
+}
+
+.loading-logo {
+  position: relative;
+  width: 84px;
+  height: auto;
+  animation: loading-float 2.6s ease-in-out infinite;
+  filter: drop-shadow(0 8px 16px rgba(18, 32, 61, 0.18));
+}
+
+.loading-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--brand-ink);
+  opacity: 0.75;
+  letter-spacing: 0.02em;
+}
+
+.loading-dots::after {
+  content: "";
+  display: inline-block;
+  width: 1.2em;
+  text-align: start;
+  animation: loading-dots 1.4s steps(4, end) infinite;
+}
+
+@keyframes loading-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes loading-glow-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+@keyframes loading-dots {
+  0% { content: ""; }
+  25% { content: "."; }
+  50% { content: ".."; }
+  75% { content: "..."; }
+  100% { content: ""; }
+}
+
+.inline-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--brand-ink);
+  opacity: 0.7;
+}
+
+.inline-loading .loading-logo {
+  width: 22px;
+  animation-duration: 1.8s;
+}
+
+/* ============================================
+   NEW: Skeleton loaders — بدائل لشاشة التحميل الموحّدة
+   في الأماكن اللي بيتقفل جواها قايمة/كارت بشكل متكرر، عشان تحس إن
+   المحتوى بيتحمّل مكانه فعليًا (زي Linear/Notion) بدل ما تشوف سبينر
+   وسط الصفحة كل مرة. كل عنصر بياخد شكل قريب من المحتوى الحقيقي اللي
+   هيحل مكانه، فمفيش قفزة (layout shift) لما البيانات توصل.
+   ============================================ */
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after {
+    animation: none;
+  }
+}
+
+.skeleton-text {
+  height: 14px;
+  margin: 4px 0;
+}
+
+.skeleton-text--sm {
+  height: 11px;
+  width: 40%;
+}
+
+.skeleton-text--lg {
+  height: 20px;
+  width: 55%;
+}
+
+.skeleton-text--md {
+  width: 60%;
+}
+
+.skeleton-text--wide {
+  width: 75%;
+}
+
+.skeleton-field {
+  display: block;
+  width: 100%;
+  height: var(--tap-target-min);
+  border-radius: var(--radius-md);
+}
+
+.skeleton-circle {
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skeleton-circle--md {
+  width: 36px;
+  height: 36px;
+}
+
+.skeleton-stat-card__value {
+  height: 26px;
+  width: 50%;
+}
+
+.skeleton-stat-card__label {
+  margin-top: 10px;
+}
+
+/* كارت إحصائية وهمي — نفس شكل .stat-card تمامًا بدون رقم حقيقي بعد */
+.skeleton-stat-card {
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 16px var(--space-4);
+}
+
+/* صف/كارت قايمة وهمي — نفس هيكل كارت الطلب/الدكتور العادي */
+.skeleton-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 14px var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background-color: var(--card);
+  margin-bottom: var(--space-2);
+}
+
+.skeleton-row__body {
+  flex: 1;
+  min-width: 0;
+}
+
+/* كارت دكتور وهمي — نفس أبعاد .doctor-card تمامًا */
+.skeleton-doctor-card {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 16px var(--space-4);
+  padding-inline-start: 20px;
+  margin-bottom: var(--space-3);
+}
+
+/* ============================================
+   عناصر تانية من صفحات المشروع (NEW — إضافي)
+   ============================================ */
+
+.coverage-card {
+  transition:
+    box-shadow var(--transition-base),
+    transform var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.coverage-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--overlay-scrim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 50;
+}
+
+.modal-card {
+  background-color: var(--card);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  width: 100%;
+  max-width: 420px;
+  max-height: 85vh;
+  overflow-y: auto;
+  transition: box-shadow var(--transition-base);
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-card h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.modal-note {
+  font-size: 12.5px;
+  color: var(--amber);
+  background-color: var(--amber-bg);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  margin: 10px 0;
+}
+
+.modal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 14px 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.modal-list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background-color: var(--paper);
+  cursor: pointer;
+  text-align: right;
+}
+
+.modal-list__item:hover {
+  border-color: var(--ink);
+}
+
+.modal-list__item:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.modal-list__name {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.modal-list__meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ============================================
+   NEW: مجموعة تابات موحّدة (Week/Day tab groups)
+   كانت متكررة بنفس القيم تقريبًا في AdminDashboard وRepCoverage
+   وAdminApprovals (باختلافات بسيطة في المسافات/المقاس)، ومصدر واحد
+   هنا كان بيتعارض فعليًا مع كل نسخهم (active state كان بخلفية
+   متدرجة مش موجودة في أي صفحة فعليًا). دلوقتي القيم الأساسية هنا
+   بتطابق الاستخدام الفعلي، وكل صفحة سايبة بس الفروق (المسافة/المقاس).
+   ============================================ */
+
+.week-tabs,
+.day-tabs,
+.admin-approvals__tabs,
+.admin-reports__period-toggle {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 4px;
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  max-width: 100%;
+}
+
+.week-tabs__tab,
+.day-tabs__tab,
+.admin-reports__period-btn {
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: var(--muted);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.week-tabs__tab:hover,
+.day-tabs__tab:hover,
+.admin-reports__period-btn:hover {
+  color: var(--ink);
+}
+
+.week-tabs__tab--active,
+.day-tabs__tab--active,
+.admin-reports__period-btn--active {
+  background-color: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+
+.badge-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-blue-dark);
+  background: var(--accent-blue-light);
+  border: 1px solid rgba(46, 154, 201, 0.25);
+}
+
+.card-accent {
+  border-inline-start: 3px solid var(--accent-blue);
+}
+
+.rep-coverage__message {
+  color: var(--brand-ink);
+  opacity: 0.75;
+  transition: opacity var(--transition-base);
+}

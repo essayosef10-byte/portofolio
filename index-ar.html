@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>يوسف عيسى (Joey) | مطور برمجيات الويب والذكاء الاصطناعي (Full-Stack & AI)</title>
+  <meta name="description" content="البورتفوليو الرسمي للمطور يوسف عيسى (Joey) - مطور مواقع وتطبيقات متكاملة (React 19, Next.js 15, Supabase, Geolocation, Google GenAI)">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- SheetJS for Live Excel Export -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Cairo', 'Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#F0F7FF',
+              100: '#E0EFFF',
+              500: '#3B82F6',
+              600: '#2563EB',
+              700: '#1D4ED8',
+              800: '#1E40AF',
+              accent: '#F59E0B',
+              emerald: '#10B981',
+            }
+          },
+          boxShadow: {
+            'glow-button': '0 8px 24px -4px rgba(37, 99, 235, 0.35)',
+            'card-hover': '0 20px 40px -15px rgba(0, 0, 0, 0.07)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #F8FAFC;
+      color: #0F172A;
+      font-family: 'Cairo', sans-serif;
+    }
+    .ambient-mesh {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: 
+        radial-gradient(circle at 10% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(244, 63, 94, 0.04) 0%, transparent 55%),
+        radial-gradient(circle at 20% 85%, rgba(16, 185, 129, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 45%);
+    }
+    .glass-light {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(226, 232, 240, 0.85);
+    }
+    .gradient-hero-text {
+      background: linear-gradient(135deg, #1E293B 10%, #2563EB 55%, #7C3AED 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .btn-gradient {
+      background: linear-gradient(135deg, #2563EB 0%, #4F46E5 50%, #7C3AED 100%);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-gradient:hover {
+      box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.45);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="selection:bg-brand-500 selection:text-white relative min-h-screen">
+
+  <div class="ambient-mesh"></div>
+
+  <!-- Top Figma Ribbon -->
+  <div class="bg-slate-100/90 border-b border-slate-200 py-1.5 px-4 text-xs">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-right">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center justify-center w-5 h-5 rounded-md bg-[#F24E1E]/10 text-[#F24E1E] font-bold">
+          <i class="fa-brands fa-figma text-xs"></i>
+        </span>
+        <span class="text-slate-800 font-bold">تصميم واجهة البورتفوليو موثق على Figma</span>
+        <span class="text-slate-300">•</span>
+        <span class="text-slate-600 hidden md:inline font-medium">مربوط ومفحوص مباشرة عبر Figma MCP Server</span>
+      </div>
+      <a href="https://www.figma.com/design/3JZ3owqtWvhfBAMQFWOMBY" target="_blank" 
+         class="mx-auto sm:mx-0 inline-flex items-center gap-1.5 text-xs text-brand-600 hover:text-brand-800 font-extrabold transition-colors">
+        <span>فتح ملف فيجما للتصميم</span>
+        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-40 py-3.5 px-4 sm:px-8 border-b border-slate-200 bg-white/90 backdrop-blur-md shadow-xs">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-indigo-600 to-sky-500 flex items-center justify-center font-black text-white shadow-glow-button transition-transform group-hover:scale-105">
+          ي ع
+        </div>
+        <div>
+          <span class="font-black text-lg tracking-tight text-slate-900 group-hover:text-brand-600 transition-colors">يوسف عيسى</span>
+          <span class="text-[11px] text-brand-600 font-mono block font-bold">Yousef Eissa (Joey) • Full-Stack Dev</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-bold text-slate-700">
+        <a href="#hero" class="hover:text-brand-600 transition-colors">الرئيسية</a>
+        <a href="#projects" class="hover:text-brand-600 flex items-center gap-1.5 text-brand-600 transition-colors">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </span>
+          <span>المشاريع والتطبيقات (6)</span>
+        </a>
+        <a href="#skills" class="hover:text-brand-600 transition-colors">المهارات التقنية</a>
+        <a href="#about" class="hover:text-brand-600 transition-colors">نبذة عني</a>
+      </div>
+
+      <!-- Action Buttons & Language Switcher -->
+      <div class="flex items-center gap-2.5">
+        <!-- Language Switcher Pill -->
+        <a href="./index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 text-xs font-bold transition-all shadow-2xs" title="Switch to English">
+          <i class="fa-solid fa-globe text-indigo-600"></i>
+          <span>English</span>
+        </a>
+
+        <a href="https://wa.me/201096382297?text=مرحباً%20يوسف،%20شاهدت%20البورتفوليو%20الخاص%20بك%20وأرغب%20في%20مناقشة%20مشروع!" 
+           target="_blank"
+           class="inline-flex items-center gap-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-300 px-4 py-2 rounded-full text-xs font-bold transition-all shadow-xs">
+          <i class="fa-brands fa-whatsapp text-sm text-emerald-600"></i>
+          <span class="hidden sm:inline">محادثة واتساب</span>
+        </a>
+        <a href="https://www.linkedin.com/in/yousef-eissa-27451534a/" 
+           target="_blank"
+           class="inline-flex items-center gap-2 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 px-4 py-2 rounded-full text-xs font-bold transition-all shadow-xs">
+          <i class="fa-brands fa-linkedin text-sm text-blue-600"></i>
+          <span class="hidden sm:inline">لينكد إن</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-24 space-y-24">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative text-center lg:text-right flex flex-col lg:flex-row items-center justify-between gap-12 pt-4 sm:pt-8">
+      
+      <div class="max-w-2xl space-y-6">
+        
+        <!-- Status Pill -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700 shadow-xs">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </span>
+          <span class="text-slate-900 font-black">مطور برمجيات Full-Stack وحلول الذكاء الاصطناعي</span>
+          <span class="text-slate-300">•</span>
+          <span class="text-emerald-700 font-bold">متاح للتعاقد والمشاريع الجديدة</span>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-slate-900 leading-[1.25]">
+          تطوير تطبيقات الويب عالية الأداء و <span class="gradient-hero-text">الأنظمة الذكية</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl font-medium">
+          أهلاً بك، أنا <strong class="text-slate-900 font-extrabold">يوسف عيسى (Joey)</strong>. أبني منصات وأنظمة رقمية متكاملة وسريعة: من قواعد بيانات <span class="text-indigo-600 font-bold">Supabase PostgreSQL</span> وتتبع الخرائط بالـ GPS الجغرافي <span class="text-amber-600 font-bold">Leaflet</span>، إلى معمارية <span class="text-purple-600 font-bold">Next.js 15 وReact 19</span> وحلول الذكاء الاصطناعي التوليدي <span class="text-rose-600 font-bold">Google GenAI SDK</span>.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+          <a href="#projects" class="btn-gradient text-white font-bold px-7 py-3.5 rounded-xl shadow-glow-button flex items-center gap-2.5">
+            <i class="fa-solid fa-laptop-code text-sm"></i>
+            <span>استعراض وتجربة المشاريع الـ 6</span>
+          </a>
+          <a href="https://wa.me/201096382297?text=مرحباً%20يوسف،%20أرغب%20في%20بدء%20مشروع%20جديد%20معك" target="_blank" class="bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-bold px-6 py-3.5 rounded-xl transition-all shadow-xs flex items-center gap-2">
+            <i class="fa-brands fa-whatsapp text-emerald-600"></i>
+            <span>تواصل مباشرة عبر واتساب</span>
+          </a>
+        </div>
+
+        <!-- Metric Badges -->
+        <div class="grid grid-cols-3 gap-3 pt-4 border-t border-slate-200 text-right">
+          <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-xs">
+            <div class="text-2xl font-black text-slate-900 font-mono">6 مشاريع</div>
+            <div class="text-xs text-slate-500 font-bold mt-1">SaaS, EdTech & التجارة</div>
+          </div>
+          <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-xs">
+            <div class="text-2xl font-black text-brand-600 font-mono">GPS & Maps</div>
+            <div class="text-xs text-slate-500 font-bold mt-1">تتبع جغرافي وحساب النطاق</div>
+          </div>
+          <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-xs">
+            <div class="text-2xl font-black text-emerald-600 font-mono">Google GenAI</div>
+            <div class="text-xs text-slate-500 font-bold mt-1">معالجة وتلخيص ذكي للمحتوى</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Hero Visual Terminal -->
+      <div class="w-full lg:w-5/12 max-w-md">
+        <div class="glass-light rounded-2xl p-6 shadow-card-hover relative overflow-hidden border border-slate-200 bg-white/95" dir="ltr">
+          <div class="flex items-center justify-between pb-3.5 border-b border-slate-100 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-rose-400"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+            </div>
+            <span class="text-xs font-mono font-bold text-slate-500">yousef-profile.ts</span>
+          </div>
+
+          <pre class="text-xs font-mono text-slate-700 leading-relaxed overflow-x-auto text-left"><code><span class="text-indigo-600 font-bold">export const</span> <span class="text-slate-900 font-bold">developer</span> = {
+  <span class="text-blue-600">name</span>: <span class="text-emerald-600 font-semibold">"Yousef Eissa (Joey)"</span>,
+  <span class="text-blue-600">role</span>: <span class="text-emerald-600 font-semibold">"Full-Stack Web & AI"</span>,
+  <span class="text-blue-600">stack</span>: [
+    <span class="text-indigo-600 font-semibold">"React 19"</span>, <span class="text-indigo-600 font-semibold">"Next.js 15"</span>,
+    <span class="text-indigo-600 font-semibold">"Supabase"</span>, <span class="text-indigo-600 font-semibold">"PostgreSQL"</span>,
+    <span class="text-indigo-600 font-semibold">"Tailwind CSS"</span>, <span class="text-indigo-600 font-semibold">"TypeScript"</span>
+  ],
+  <span class="text-blue-600">provenSaaS</span>: <span class="text-emerald-600 font-semibold">"Field CRM (GPS & Medical)"</span>,
+  <span class="text-blue-600">phone</span>: <span class="text-purple-600 font-semibold">"+20 109 638 2297"</span>,
+  <span class="text-blue-600">status</span>: <span class="text-emerald-600 font-bold">"Ready for new builds"</span>
+};</code></pre>
+
+          <div class="mt-4 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-semibold">
+            <span class="flex items-center gap-1.5 text-emerald-600 font-bold">
+              <i class="fa-solid fa-circle-check"></i> Production-Ready Code
+            </span>
+            <span class="font-mono text-slate-400">v2.5.0</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="space-y-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2 border-b border-slate-200">
+        <div>
+          <h2 class="text-xs font-bold tracking-widest text-brand-600 uppercase font-mono">// معرض الأعمال المختار</h2>
+          <p class="text-3xl font-extrabold text-slate-900 mt-1">6 مشاريع وتطبيقات واقعية</p>
+          <p class="text-sm text-slate-500 mt-1">اضغط على زر "تجربة الديمو والموقع كاملاً" في أي كارت لفتح التطبيق بملء الشاشة في نافذة جديدة.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="flex flex-wrap items-center gap-2" id="filter-buttons">
+          <button onclick="filterProjects('all')" class="filter-btn active px-4 py-2 rounded-xl text-xs font-bold bg-brand-600 text-white shadow-xs transition-all">
+            الكل (6)
+          </button>
+          <button onclick="filterProjects('completed')" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 transition-all">
+            🟢 مكتمل للإنتاج (2)
+          </button>
+          <button onclick="filterProjects('development')" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 transition-all">
+            🟡 قيد التطوير (3)
+          </button>
+          <button onclick="filterProjects('concept')" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 transition-all">
+            ⚪ نموذج أولي (1)
+          </button>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+
+        <!-- 1. FIELD CRM -->
+        <div class="project-card glass-light rounded-2xl p-6 flex flex-col justify-between space-y-6 border border-slate-200 transition-all" data-category="completed">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                مكتمل • جاهز للإنتاج
+              </span>
+              <span class="text-xs font-mono text-slate-400 font-semibold">SaaS طبي وميداني</span>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-xl bg-slate-50 p-2 flex items-center justify-center border border-slate-200 shadow-xs">
+                <img src="./assets/fontebeam-icon.png" alt="Fonte Beam" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/48x48/12203D/E8A324?text=CRM'">
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900">Field CRM</h3>
+                <p class="text-xs text-brand-600 font-bold">إدارة المناديب وتتبع الزيارات بالـ GPS</p>
+              </div>
+            </div>
+
+            <p class="text-sm text-slate-600 leading-relaxed font-medium">
+              نظام سحابي متكامل لإدارة فرق الدعاية الطبية والمبيعات الميدانية. يتضمن التحقق الحي من موقع المندوب بالـ GPS داخل نطاق العيادة، ومسارات الزيارات، وتصدير التقارير التلقائية بصيغة Excel.
+            </p>
+
+            <ul class="text-xs text-slate-600 space-y-1.5 font-medium">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> خريطة Leaflet تفاعلية وتحديد مواقع العيادات والأطباء</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> قاعدة بيانات Supabase PostgreSQL وإدارة الصلاحيات</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> تجهيز تطبيق أندرويد APK لنظام جوجل بلاي</li>
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">React 18</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">Supabase</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">Leaflet GPS</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">SheetJS</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 pt-2">
+            <a href="./demos/field-crm/index.html" target="_blank" class="w-full py-2.5 rounded-xl btn-gradient text-xs font-bold text-white flex items-center justify-center gap-1.5 shadow-sm hover:opacity-95 transition-all text-center">
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              <span>تجربة الديمو كاملاً</span>
+            </a>
+            <button onclick="openModal('field-crm')" class="w-full py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-circle-info text-slate-400 text-xs"></i>
+              <span>الهيكل البرمجي</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. VORTEX ACADEMY -->
+        <div class="project-card glass-light rounded-2xl p-6 flex flex-col justify-between space-y-6 border border-slate-200 transition-all" data-category="completed">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                مكتمل • جاهز للإنتاج
+              </span>
+              <span class="text-xs font-mono text-slate-400 font-semibold">EdTech & AI</span>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-xl bg-slate-50 p-2 flex items-center justify-center border border-slate-200 shadow-xs">
+                <img src="./assets/Vortex.png" alt="Vortex Academy" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/48x48/4F46E5/FFFFFF?text=VA'">
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900">Vortex Academy</h3>
+                <p class="text-xs text-brand-600 font-bold">بوابة التعليم الجامعي والذكاء الاصطناعي</p>
+              </div>
+            </div>
+
+            <p class="text-sm text-slate-600 leading-relaxed font-medium">
+              منصة تعليمية جامعية متطورة مبنية بـ Next.js 15 وReact 19. تتضمن استوديو دراسي ذكي مدعوم بـ Google Gemini SDK، عارض شرائح PDF، وبنك كويزات تفاعلي فوري.
+            </p>
+
+            <ul class="text-xs text-slate-600 space-y-1.5 font-medium">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Next.js 15 App Router & React 19</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> استوديو مذاكرة تفاعلي مع Google GenAI</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> إدارة صلاحيات وصول الطلاب لكل فرقة دراسية</li>
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">Next.js 15</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">React 19</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">Gemini SDK</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">Supabase SSR</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 pt-2">
+            <a href="./demos/vortex-academy/index.html" target="_blank" class="w-full py-2.5 rounded-xl btn-gradient text-xs font-bold text-white flex items-center justify-center gap-1.5 shadow-sm hover:opacity-95 transition-all text-center">
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              <span>تجربة الديمو كاملاً</span>
+            </a>
+            <button onclick="openModal('vortex-academy')" class="w-full py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-circle-info text-slate-400 text-xs"></i>
+              <span>الهيكل البرمجي</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. CEO BY VORTEX -->
+        <div class="project-card glass-light rounded-2xl p-6 flex flex-col justify-between space-y-6 border border-slate-200 transition-all" data-category="development">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-300">
+                <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                قيد التطوير (90% مكتمل)
+              </span>
+              <span class="text-xs font-mono text-slate-400 font-semibold">Leadership SaaS</span>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-xl bg-slate-50 p-2 flex items-center justify-center border border-slate-200 shadow-xs">
+                <img src="./assets/CEOVortex.png" alt="CEO Vortex" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/48x48/12203D/E8A324?text=CEO'">
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900">CEO by Vortex</h3>
+                <p class="text-xs text-brand-600 font-bold">منصة القيادة والمعسكرات التنفيذية</p>
+              </div>
+            </div>
+
+            <p class="text-sm text-slate-600 leading-relaxed font-medium">
+              منصة تدريب تفاعلية لقادة الأعمال ورواد الأعمال في مصر. تتضمن برامج محاكاة للأزمات، حجز المعسكرات والدبلومات، وقائمة تشغيل للمحاضرات المعتمدة.
+            </p>
+
+            <ul class="text-xs text-slate-600 space-y-1.5 font-medium">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> نظام تفاعلي ومحاكاة لقرارات مجالس الإدارة</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> مزامنة Realtime لحساب الطالب ونسب التقدم</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-hourglass-half text-amber-600"></i> المتبقي: ربط بوابات الدفع الإلكتروني والألعاب</li>
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">React 18</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">Supabase</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">Gamification</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 pt-2">
+            <a href="./demos/ceo-vortex/index.html" target="_blank" class="w-full py-2.5 rounded-xl btn-gradient text-xs font-bold text-white flex items-center justify-center gap-1.5 shadow-sm hover:opacity-95 transition-all text-center">
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              <span>تجربة الديمو كاملاً</span>
+            </a>
+            <button onclick="openModal('ceo-vortex')" class="w-full py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-circle-info text-slate-400 text-xs"></i>
+              <span>الهيكل البرمجي</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. LECTURE COMPANION (MADAR) -->
+        <div class="project-card glass-light rounded-2xl p-6 flex flex-col justify-between space-y-6 border border-slate-200 transition-all" data-category="development">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-purple-50 text-purple-700 border border-purple-200">
+                <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+                قيد التطوير (معالجة الصوت)
+              </span>
+              <span class="text-xs font-mono text-slate-400 font-semibold">AI Speech Engine</span>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-xl bg-slate-50 p-2 flex items-center justify-center border border-slate-200 shadow-xs">
+                <i class="fa-solid fa-microphone-lines text-2xl text-purple-600"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900">Lecture Companion (MADAR)</h3>
+                <p class="text-xs text-brand-600 font-bold">مساعد تفريغ وربط المحاضرات بالـ AI</p>
+              </div>
+            </div>
+
+            <p class="text-sm text-slate-600 leading-relaxed font-medium">
+              محرك ذكي لتحويل تسجيلات المحاضرات الصوتية وشرائح الـ PDF إلى مذكرات مفهرسة مع مشغل صوتي متزامن ونظام أسئلة وأجوبة يستشهد برقم الشريحة والتوقيت.
+            </p>
+
+            <ul class="text-xs text-slate-600 space-y-1.5 font-medium">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> تفريغ صوتي فائق السرعة عبر Groq Whisper & FFmpeg</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> استخراج نصوص PDF ومزامنتها مع الثواني الصوتية</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-hourglass-half text-amber-600"></i> المتبقي: تحسين دقة المصطلحات الطبية والهندسية</li>
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">Node.js</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">FFmpeg</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">Groq Whisper</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">PDF-Parse</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 pt-2">
+            <a href="./demos/lecture-companion/index.html" target="_blank" class="w-full py-2.5 rounded-xl btn-gradient text-xs font-bold text-white flex items-center justify-center gap-1.5 shadow-sm hover:opacity-95 transition-all text-center">
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              <span>تجربة الديمو كاملاً</span>
+            </a>
+            <button onclick="openModal('lecture-companion')" class="w-full py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-circle-info text-slate-400 text-xs"></i>
+              <span>الهيكل البرمجي</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 5. VORTEX TRICORA -->
+        <div class="project-card glass-light rounded-2xl p-6 flex flex-col justify-between space-y-6 border border-slate-200 transition-all" data-category="development">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-cyan-50 text-cyan-800 border border-cyan-200">
+                <span class="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
+                قيد التطوير (Storefront)
+              </span>
+              <span class="text-xs font-mono text-slate-400 font-semibold">Luxury DTC</span>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-xl bg-slate-50 p-2 flex items-center justify-center border border-slate-200 shadow-xs">
+                <i class="fa-solid fa-sparkles text-2xl text-emerald-700"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900">Vortex Tricora</h3>
+                <p class="text-xs text-brand-600 font-bold">متجر العناية الفاخرة وسيروم الشعر</p>
+              </div>
+            </div>
+
+            <p class="text-sm text-slate-600 leading-relaxed font-medium">
+              متجر إلكتروني فاخر (DTC Scalp Serum) مبني بـ Next.js وTailwind. يتميز باستعراض تفاعلي لزجاجة السيروم 50ml، التركيبة السريرية، وروتين الاستخدام.
+            </p>
+
+            <ul class="text-xs text-slate-600 space-y-1.5 font-medium">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> واجهة مستخدم فائقة السرعة بـ Next.js SSR</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> استعراض المكونات السريرية وباقات الشراء</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-hourglass-half text-amber-600"></i> المتبقي: ربط بوابة الدفع النهائية للشحن</li>
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">Next.js</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">React</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">Tailwind CSS</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 pt-2">
+            <a href="./demos/vortex-tricora/index.html" target="_blank" class="w-full py-2.5 rounded-xl btn-gradient text-xs font-bold text-white flex items-center justify-center gap-1.5 shadow-sm hover:opacity-95 transition-all text-center">
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              <span>تجربة الديمو كاملاً</span>
+            </a>
+            <button onclick="openModal('vortex-tricora')" class="w-full py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-circle-info text-slate-400 text-xs"></i>
+              <span>الهيكل البرمجي</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 6. YARA SHOP -->
+        <div class="project-card glass-light rounded-2xl p-6 flex flex-col justify-between space-y-6 border border-slate-200 transition-all" data-category="concept">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                نموذج أولي متكامل
+              </span>
+              <span class="text-xs font-mono text-slate-400 font-semibold">E-Commerce Storefront</span>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-xl bg-slate-50 p-2 flex items-center justify-center border border-slate-200 shadow-xs">
+                <i class="fa-solid fa-bag-shopping text-2xl text-rose-600"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900">Yara Shop</h3>
+                <p class="text-xs text-brand-600 font-bold">بوتيك الحجاب والأزياء الراقية</p>
+              </div>
+            </div>
+
+            <p class="text-sm text-slate-600 leading-relaxed font-medium">
+              متجر إلكتروني خفيف وسريع للأزياء والحجاب في مصر. يحتوي على فلاتر تصنيفات حية، سلة تسوق تفاعلية مع حساب مصاريف الشحن وتطبيق كوبونات الخصم، ولوحة إدارة المخزون.
+            </p>
+
+            <ul class="text-xs text-slate-600 space-y-1.5 font-medium">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> فلاتر تصنيف فورية (شيفون، جيرسي، كريب، عباية)</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> سلة تسوق حية وحساب الشحن لمحافظات مصر</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> لوحة تحكم لإدارة المنتجات والمبيعات والمخزن</li>
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5 pt-2">
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">React</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">Tailwind CSS</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[11px] font-mono font-bold">PostCSS</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 pt-2">
+            <a href="./demos/yara-shop/index.html" target="_blank" class="w-full py-2.5 rounded-xl btn-gradient text-xs font-bold text-white flex items-center justify-center gap-1.5 shadow-sm hover:opacity-95 transition-all text-center">
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              <span>تجربة الديمو كاملاً</span>
+            </a>
+            <button onclick="openModal('yara-shop')" class="w-full py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-circle-info text-slate-400 text-xs"></i>
+              <span>الهيكل البرمجي</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- SKILLS MATRIX -->
+    <section id="skills" class="space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div>
+          <h2 class="text-xs font-bold tracking-widest text-brand-600 uppercase font-mono">// الخبرات والتقنيات</h2>
+          <p class="text-2xl font-black text-slate-900 mt-1">المهارات والبيئة البرمجية</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-lg font-bold">
+            <i class="fa-brands fa-react"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900">Frontend Engineering</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-medium">React 19, Next.js 15 (App Router & SSR), Tailwind CSS, TypeScript, Redux Toolkit, Leaflet Mapping API.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-lg font-bold">
+            <i class="fa-solid fa-database"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900">Backend & Cloud Databases</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-medium">Supabase, PostgreSQL, Row-Level Security (RLS), Node.js, Express, RESTful APIs, SheetJS, FFmpeg Audio Pipeline.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-lg font-bold">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900">AI Integrations & DevOps</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-medium">Google GenAI (Gemini SDK), Groq STT (Whisper), Prompt Engineering, Git, Vercel, Netlify, Android APK Packaging.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT & CONTACT SECTION -->
+    <section id="about" class="bg-white p-8 rounded-3xl border border-slate-200 shadow-xs space-y-6">
+      <div class="max-w-3xl space-y-4">
+        <h2 class="text-2xl font-black text-slate-900">نبذة عن يوسف عيسى (Joey)</h2>
+        <p class="text-sm text-slate-600 leading-relaxed font-medium">
+          مطور برمجيات متكامل (Full-Stack Web Developer) من مصر، متخصص في هندسة تطبيقات الويب التفاعلية وحلول الأعمال والذكاء الاصطناعي. شغوف بتحويل الأفكار المعقدة إلى منتجات رقمية سهلة الاستخدام وعالية الأداء تفيد المستخدمين والشركات على أرض الواقع.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="https://wa.me/201096382297?text=مرحباً%20يوسف،%20أود%20التعاون%20معك%20في%20مشروع" target="_blank" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition-all flex items-center gap-2">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span>واتساب: 01096382297</span>
+          </a>
+          <a href="https://www.linkedin.com/in/yousef-eissa-27451534a/" target="_blank" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs transition-all flex items-center gap-2">
+            <i class="fa-brands fa-linkedin text-sm"></i>
+            <span>الملف الشخصي على LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Technical Modal -->
+  <div id="project-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative text-right">
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <footer class="border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 font-medium">
+    <p>© 2026 يوسف عيسى (Joey) • تم التطوير والتصميم بأحدث تقنيات الويب العصرية</p>
+  </footer>
+
+  <script>
+    const projectDetails = {
+      'field-crm': {
+        title: 'Field CRM (منظومة الدعاية والمبيعات الطبية الميدانية)',
+        subtitle: 'Enterprise SaaS & Geolocation Platform',
+        statusBadge: '🟢 مكتمل • جاهز للإنتاج',
+        statusColor: 'text-emerald-700 bg-emerald-50 border-emerald-300',
+        overview: 'نظام متكامل لإدارة مندوبي المبيعات الطبية وحل مشكلة المتابعة الميدانية والتحقق من زيارة العيادات وتخطيط المناطق الجغرافية بدقة عالية.',
+        architecture: [
+          'الواجهة الأمامية: مبنية بـ React 18 مع مكتبة Leaflet لرسم الخرائط الجغرافية لنطاق أطباء القاهرة.',
+          'الباك إند وقاعدة البيانات: Supabase PostgreSQL مع تفعيل أمان الصفوف (RLS) وتحديد أدوار المستخدمين.',
+          'تصدير البيانات: تكامل مباشر مع SheetJS لتنزيل تقارير الزيارات بصيغة Excel حقيقية (.xlsx).',
+          'الجوّال: تم تجميع وتجهيز حزمة أندرويد APK لنشرها على متجر جوجل بلاي.'
+        ],
+        techStack: ['React 18', 'Supabase', 'Leaflet Maps', 'PostgreSQL', 'SheetJS', 'Tailwind CSS']
+      },
+      'vortex-academy': {
+        title: 'Vortex Academy (بوابة التعليم الجامعي والـ AI)',
+        subtitle: 'Intelligent College EdTech Portal',
+        statusBadge: '🟢 مكتمل • جاهز للإنتاج',
+        statusColor: 'text-indigo-700 bg-indigo-50 border-indigo-300',
+        overview: 'منصة جامعية متطورة تدمج التعليم الأكاديمي بنماذج الذكاء الاصطناعي التوليدي لمساعدة الطلاب على الاستيعاب وتوليد الاختبارات التفاعلية.',
+        architecture: [
+          'Next.js 15 & React 19: بنية App Router فائقة السرعة مع دعم التوليد السيرفري (SSR).',
+          'استوديو المذاكرة بالذكاء الاصطناعي: متصل بحزمة @google/genai لشرح المفاهيم وتلخيص شرائح المحاضرات.',
+          'إدارة الصلاحيات: نظام دقيق للتحكم في وصول الطلاب لمقررات كل فرقة دراسية.',
+          'محرك الكويزات: اختبارات تفاعلية فورية تحتسب النتيجة وتصحح الأخطاء تلقائياً.'
+        ],
+        techStack: ['Next.js 15', 'React 19', 'Google GenAI SDK', 'Supabase SSR', 'Lucide Icons']
+      },
+      'ceo-vortex': {
+        title: 'CEO by Vortex (منصة القيادة والمعسكرات التنفيذية)',
+        subtitle: 'Executive Business Simulation Platform',
+        statusBadge: '🟡 قيد التطوير (90% مكتمل)',
+        statusColor: 'text-amber-700 bg-amber-50 border-amber-300',
+        overview: 'منصة تدريب تفاعلية لرواد الأعمال وقادة الشركات في مصر تجمع بين المحاكاة الواقعية ومحتوى الأعمال التنفيذي.',
+        architecture: [
+          'نظام التفاعل: نظام تتبع وتقدم يكافئ تحقيق الأهداف والمهام الاستراتيجية.',
+          'البنية التحتية: Supabase لمزامنة تقدم الطلاب في المحاضرات وحفظ الأكواد والشهادات.',
+          'الخطوة القادمة: ربط بوابات الدفع الإلكتروني للاشتراك في المعسكرات والألعاب المصغرة.'
+        ],
+        techStack: ['React 18', 'Supabase', 'React Router', 'Gamification Engine']
+      },
+      'lecture-companion': {
+        title: 'Lecture Companion (Vortex-Madar)',
+        subtitle: 'AI Audio & Document Processing Engine',
+        statusBadge: '🟣 قيد التطوير (تحسين نماذج الصوت)',
+        statusColor: 'text-purple-700 bg-purple-50 border-purple-300',
+        overview: 'محرك ذكي لتحويل تسجيلات المحاضرات الصوتية وشرائح الـ PDF إلى مذكرات مفهرسة مع إحالات دقيقة لرقم الصفحة والتوقيت بالثانية.',
+        architecture: [
+          'معالجة الصوت: خدمة Node.js مع FFmpeg لتنقية ومعالجة الصوت وتحويله عبر Groq Whisper في ثوانٍ.',
+          'استخراج ملفات PDF: مكتبة pdf-parse لاستخراج المحتوى وربطه بتسلسل الصوت.',
+          'المساعد الذكي: نظام RAG للإجابة عن أسئلة الطلاب مع ذكر الدقيقة الدقيقة من المحاضرة.'
+        ],
+        techStack: ['Node.js', 'FFmpeg', 'Groq Whisper', 'PDF-Parse', 'Express']
+      },
+      'vortex-tricora': {
+        title: 'Vortex Tricora (متجر السيروم الفاخر)',
+        subtitle: 'High-End Hair Care & Scalp Therapy Platform',
+        statusBadge: '🟡 قيد التطوير',
+        statusColor: 'text-cyan-700 bg-cyan-50 border-cyan-300',
+        overview: 'متجر إلكتروني فاخر (DTC) مصمم لسيروم متقدم لفروة الرأس والشعر، يجمع بين التصميم العصري وسرعة التحميل العالية.',
+        architecture: [
+          'المعمارية: مبني بـ Next.js مع Server-Side Rendering لسرعة فائقة وتهيئة ممتازة لمحركات البحث.',
+          'التجربة البصرية: استعراض تفاعلي لزجاجة السيروم 50ml والتركيبة السريرية والمكونات الفعالة.',
+          'سلة الشراء: اختيار باقات العلاج (عبوة مفردة، باقة ثنائية، كورس 90 يوم).'
+        ],
+        techStack: ['Next.js', 'React', 'Tailwind CSS', 'DTC E-Commerce UX']
+      },
+      'yara-shop': {
+        title: 'Yara Shop (بوتيك الأزياء والحجاب)',
+        subtitle: 'E-Commerce Storefront Prototype',
+        statusBadge: '⚪ نموذج أولي متكامل',
+        statusColor: 'text-slate-700 bg-slate-100 border-slate-300',
+        overview: 'متجر إلكتروني خفيف وسريع للأزياء والحجاب في مصر يركز على سهولة الشراء وسلاسة السلة والتنقل.',
+        architecture: [
+          'الفلاتر: فلترة حية حسب نوع الأقمشة (شيفون، جيرسي، كريب، تركي، عباية).',
+          'سلة التسوق: تعديل الكميات وحساب مصاريف التوصيل وتطبيق كوبونات الخصم.',
+          'إدارة المخزون: جدول إدارة المنتجات والقطع المتوفرة وتنبيهات أوشك على النفاد.'
+        ],
+        techStack: ['React', 'Tailwind CSS', 'PostCSS', 'Cart Management']
+      }
+    };
+
+    function filterProjects(category) {
+      const cards = document.querySelectorAll('.project-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-brand-600', 'text-white', 'shadow-xs');
+        btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+      });
+      event.target.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+      event.target.classList.add('bg-brand-600', 'text-white', 'shadow-xs');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function openModal(projectId) {
+      const data = projectDetails[projectId];
+      if (!data) return;
+
+      const modal = document.getElementById('project-modal');
+      const content = document.getElementById('modal-content');
+
+      content.innerHTML = `
+        <div class="space-y-6">
+          <div>
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold border ${data.statusColor} mb-2">
+              ${data.statusBadge}
+            </span>
+            <h3 class="text-2xl font-black text-slate-900">${data.title}</h3>
+            <p class="text-sm text-brand-600 font-bold">${data.subtitle}</p>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-bold uppercase text-slate-500 font-mono mb-2">// نبذة عامة</h4>
+            <p class="text-sm text-slate-600 leading-relaxed font-medium">${data.overview}</p>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-bold uppercase text-slate-500 font-mono mb-2">// أبرز معالم الهيكل البرمجي</h4>
+            <ul class="text-xs text-slate-700 space-y-2 font-medium">
+              ${data.architecture.map(item => `
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-arrow-left text-brand-600 mt-0.5 text-[10px]"></i>
+                  <span>${item}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-bold uppercase text-slate-500 font-mono mb-2">// التقنيات المستخدمة</h4>
+            <div class="flex flex-wrap gap-2">
+              ${data.techStack.map(tech => `
+                <span class="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-xs font-mono text-slate-800 font-bold">${tech}</span>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-200 flex items-center justify-between">
+            <a href="https://wa.me/201096382297?text=مرحباً%20يوسف،%20أرغب%20في%20مناقشة%20تفاصيل%20مشروع%20${encodeURIComponent(data.title)}" 
+               target="_blank"
+               class="btn-gradient text-white px-5 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 shadow-xs">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+              <span>مناقشة هذا المشروع عبر واتساب</span>
+            </a>
+            <button onclick="closeModal()" class="text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors">إغلاق</button>
+          </div>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('project-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('project-modal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+  </script>
+
+</body>
+</html>

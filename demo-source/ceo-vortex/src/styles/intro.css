@@ -1,0 +1,231 @@
+/* Cinematic intro overlay. Always dark, regardless of system theme.
+   Highest z-index, fixed full-screen. */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #050d2b;
+  overflow: hidden;
+  isolation: isolate;
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+.intro--leaving {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+/* Star-field canvas */
+.intro-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Film grain: an inline SVG noise via CSS background. */
+.intro-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.06;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.7'/></svg>");
+  background-repeat: repeat;
+  mix-blend-mode: overlay;
+}
+
+/* Vignette */
+.intro-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+/* Cinematic letterbox bars */
+.intro-bar {
+  position: absolute;
+  inset-inline: 0;
+  height: 11vh;
+  background: #000;
+  z-index: 4;
+  transform: translateY(-110%);
+  transition: transform 0.6s var(--ease);
+}
+
+.intro-bar--top {
+  top: 0;
+}
+
+.intro-bar--bottom {
+  top: auto;
+  bottom: 0;
+  transform: translateY(110%);
+}
+
+.intro--bars .intro-bar,
+.intro--scenes .intro-bar,
+.intro--logos .intro-bar {
+  transform: translateY(0);
+}
+
+.intro--leaving .intro-bar {
+  transform: translateY(-110%);
+}
+
+.intro--leaving .intro-bar--bottom {
+  transform: translateY(110%);
+}
+
+/* Stage: the scene text or logos */
+.intro-stage {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  padding: 0 var(--space-5);
+  text-align: center;
+  max-width: min(900px, 92vw);
+  animation: intro-push 25s ease-out forwards;
+}
+
+@keyframes intro-push {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+/* Scene line */
+.intro-line {
+  margin: 0;
+  font-family: 'Newsreader', 'Noto Naskh Arabic', Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 4.5vw, 2.8rem);
+  line-height: 1.35;
+  color: #f2f6ff;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: intro-line-in 0.6s var(--ease) forwards;
+}
+
+html[lang='ar'] .intro-line {
+  font-family: 'Noto Naskh Arabic', 'Newsreader', serif;
+  letter-spacing: 0;
+  line-height: 1.7;
+  animation-name: intro-line-in-ar;
+}
+
+.intro-line::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 1px;
+  margin: 18px auto 0;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  animation: intro-underline 0.9s 0.2s var(--ease) forwards;
+}
+
+@keyframes intro-line-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    letter-spacing: 0.12em;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.04em;
+  }
+}
+
+@keyframes intro-line-in-ar {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes intro-underline {
+  from {
+    width: 0;
+  }
+  to {
+    width: 64px;
+  }
+}
+
+/* Logos */
+.intro-logos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  opacity: 0;
+  transform: scale(0.96);
+  animation: intro-logos-in 1s var(--ease) forwards;
+}
+
+@keyframes intro-logos-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.intro-logo {
+  display: block;
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.intro-logo--ceo {
+  width: clamp(120px, 22vw, 200px);
+  height: auto;
+}
+
+.intro-logo--wordmark {
+  width: clamp(220px, 34vw, 380px);
+  height: auto;
+}
+
+/* Soft light sweep behind logos */
+.intro--logos .intro-vignette {
+  background: radial-gradient(ellipse at center, rgba(84, 207, 255, 0.18) 0%, transparent 45%, rgba(0, 0, 0, 0.6) 100%);
+  animation: intro-light-sweep 1.6s ease-out forwards;
+}
+
+@keyframes intro-light-sweep {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Continue button removed — any tap/click skips the intro */
+
+@media (prefers-reduced-motion: reduce) {
+  .intro {
+    display: none;
+  }
+}

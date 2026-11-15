@@ -1,0 +1,17 @@
+node_modules
+build
+.env
+.env.local
+
+*.log
+coder-*.ps1
+.env
+.env.local
+
+all_code.txt
+project-code.txt
+ceo-code*.txt
+
+all_code.txt
+project-code.txt
+ceo-code*.txt

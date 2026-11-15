@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vortex Tricora • Luxury Scalp Serum DTC (Live Demo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body { font-family: 'Cairo', sans-serif; background-color: #FAFAF9; color: #0F172A; }
+    .font-serif-luxury { font-family: 'Playfair Display', serif; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  
+  <!-- Floating Portfolio Navigation Bar -->
+  <div id="demo-floating-banner" class="fixed top-0 left-0 right-0 z-50 bg-[#064E3B] text-white px-4 py-2.5 shadow-md flex items-center justify-between text-xs font-sans border-b border-white/10">
+    <div class="flex items-center gap-2.5">
+      <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-[10px]">
+        <i class="fa-solid fa-play"></i>
+      </span>
+      <span class="font-bold">Live Standalone Demo:</span>
+      <span class="text-amber-300 font-black">Vortex Tricora (Luxury DTC Scalp Therapy Storefront)</span>
+      <span class="text-white/40 hidden sm:inline">•</span>
+      <span class="text-slate-300 hidden sm:inline">Built by Yousef Eissa (Joey)</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="../../index.html" class="px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold transition-all flex items-center gap-1.5 border border-white/20">
+        <i class="fa-solid fa-arrow-left text-[10px]"></i>
+        <span>Back to Portfolio</span>
+      </a>
+      <button onclick="document.getElementById('demo-floating-banner').style.display='none'" class="w-6 h-6 rounded-md hover:bg-white/10 flex items-center justify-center text-slate-400 hover:text-white" title="Hide Banner">
+        <i class="fa-solid fa-xmark text-xs"></i>
+      </button>
+    </div>
+  </div>
+  <div class="h-10"></div>
+    
+
+  <header class="bg-white/95 backdrop-blur-md border-b border-emerald-200/80 sticky top-10 z-40 px-4 sm:px-8 py-3.5 shadow-xs">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#064E3B] to-[#047857] flex items-center justify-center font-black text-amber-300 shadow-xs">
+          <i class="fa-solid fa-sparkles text-lg"></i>
+        </div>
+        <div>
+          <span class="font-black text-[#064E3B] text-lg tracking-tight font-sans">VORTEX TRICORA</span>
+          <span class="text-[10px] text-emerald-700 block font-bold">Advanced Scalp Serum DTC Platform • Next.js & Tailwind</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 text-xs font-bold">
+        <button onclick="switchTab('store')" id="tab-btn-store" class="px-4 py-2 rounded-xl bg-[#064E3B] text-white flex items-center gap-2 transition-all shadow-xs">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span>المتجر والمنتج</span>
+        </button>
+        <button onclick="switchTab('science')" id="tab-btn-science" class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 flex items-center gap-2 transition-all">
+          <i class="fa-solid fa-dna text-emerald-600"></i>
+          <span>التركيبة والعلوم</span>
+        </button>
+        <button onclick="switchTab('routine')" id="tab-btn-routine" class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 flex items-center gap-2 transition-all">
+          <i class="fa-solid fa-list-check text-indigo-600"></i>
+          <span>بروتوكول الاستخدام</span>
+        </button>
+        <button onclick="switchTab('cart')" id="tab-btn-cart" class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 flex items-center gap-2 transition-all">
+          <i class="fa-solid fa-cart-shopping text-amber-600"></i>
+          <span id="tricora-tab-cart-label">السلة والباقات (1)</span>
+        </button>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <span class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-bold">
+          50ml (1.69 fl.oz) • Clinical Formula
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-7xl mx-auto w-full p-4 sm:p-8 space-y-6">
+
+    <!-- TAB 1: STORE -->
+    <div id="view-store" class="space-y-6">
+      <div class="bg-gradient-to-r from-emerald-950 via-[#064E3B] to-[#047857] text-white p-8 sm:p-12 rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="space-y-4 max-w-xl">
+          <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-emerald-200 text-xs font-bold border border-white/20">
+            <i class="fa-solid fa-certificate text-amber-400"></i> Vortex BioPharma Exclusive
+          </span>
+          <h1 class="text-3xl sm:text-5xl font-black leading-tight">
+            Vortex Tricora <br/>
+            <span class="text-amber-300 font-serif-luxury italic">Advanced Scalp Revitalizing Serum</span>
+          </h1>
+          <p class="text-xs sm:text-sm text-emerald-100 leading-relaxed font-medium">
+            تركيبة بيولوجية متقدمة مصممة لتغذية بصيلات الشعر وتحفيز الدورة الدموية في فروة الرأس مع جزيئات ZnO Nanoparticles ومركب mDHT الحصري.
+          </p>
+          <div class="flex flex-wrap items-center gap-4 pt-3">
+            <div class="text-3xl font-black text-amber-300 font-mono">650 ج.م <span class="text-xs text-emerald-200 line-through">850 ج.م</span></div>
+            <button onclick="setBundle('Single Bottle (50ml)', 650)" class="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs shadow-md transition-all flex items-center gap-2">
+              <i class="fa-solid fa-cart-plus"></i>
+              <span>أضف للطلب الآن</span>
+            </button>
+            <button onclick="switchTab('science')" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/20 transition-all">
+              العلوم والنتائج السريرية
+            </button>
+          </div>
+        </div>
+
+        <div class="w-full sm:w-72 bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20 text-center space-y-4 shrink-0">
+          <div class="w-24 h-36 mx-auto rounded-2xl bg-gradient-to-t from-emerald-800 to-emerald-600 border border-emerald-400 flex items-center justify-center text-white text-4xl shadow-xl relative">
+            <i class="fa-solid fa-bottle-droplet text-amber-300"></i>
+            <span class="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-amber-400 text-slate-950 font-black text-xs flex items-center justify-center">50ml</span>
+          </div>
+          <div class="text-sm font-bold text-white">Vortex Tricora Scalp Serum</div>
+          <div class="text-xs text-emerald-200">ZnO Nanoparticles & mDHT Complex</div>
+          <div class="pt-2 border-t border-white/10 text-xs text-emerald-300 font-bold">
+            خالي من الكبريتات والبارابين • سريع الامتصاص
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2.5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+            <i class="fa-solid fa-shield-virus"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900">تثبيط ميكانيكي لـ DHT</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-medium">حماية محيط البصيلات من انكماش التروية الدموية الناجم عن هرمون الديهيدروتستوستيرون.</p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2.5">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900">مستخلص إكليل الجبل المركز</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-medium">مستخلص نباتي نقي مثبت الفاعلية في تنشيط الدورة الدموية وتغذية خلايا الفروة.</p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2.5">
+          <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900">نتائج سريرية خلال 90 يوم</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-medium">بروتوكول استخدام منتظم مرتين يومياً صباحاً ومساءً لنتائج ملحوظة في الكثافة.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: SCIENCE -->
+    <div id="view-science" class="hidden space-y-6">
+      <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xs space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div>
+            <span class="text-xs font-bold text-emerald-700 uppercase tracking-widest font-mono">// Bio-Active Ingredients</span>
+            <h2 class="text-xl font-black text-slate-900 mt-1">تفكيك التركيبة الفعالة لـ Vortex Tricora</h2>
+            <p class="text-xs text-slate-500">مكونات نقية صُممت بتوازن دقيق بين العلوم الطبية والمستخلصات النباتية الفاخرة</p>
+          </div>
+          <span class="px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold">
+            For External Scalp Use Only
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <h3 class="text-sm font-black text-[#064E3B] flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <span>جزيئات أكسيد الزنك النانوية (ZnO Nanoparticles)</span>
+            </h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">توفر درعاً مضاداً للأكسدة والالتهابات على سطح الفروة، وتهدئ الحكة والتهيج لتهيئة بيئة بيولوجية مثالية لنمو الشعر.</p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <h3 class="text-sm font-black text-[#064E3B] flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <span>مستخلص أوراق إكليل الجبل (Rosmarinus Officinalis)</span>
+            </h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">يحفز تدفق الأكسجين والمغذيات الدقيقة إلى جذور الشعر، ويعمل بتآزر تام مع ببتيدات Biotinoyl Tripeptide-1.</p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <h3 class="text-sm font-black text-[#064E3B] flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <span>الكافيين المغلف (Encapsulated Caffeine)</span>
+            </h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">ينفذ بعمق عبر مسام الفروة دون أي ملمس دهني لإيقاظ البصيلات الخاملة ودعم مرحلة الـ Anagen (النمو النشط).</p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <h3 class="text-sm font-black text-[#064E3B] flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <span>زيت النعناع الطبيعي (Peppermint & Menthol)</span>
+            </h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">إحساس منعش وفوري بالبرودة والانتعاش يحسن الامتصاص ويمنح تجربة عناية شخصية راقية يومياً.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: ROUTINE -->
+    <div id="view-routine" class="hidden space-y-6">
+      <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xs space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div>
+            <h2 class="text-xl font-black text-slate-900">بروتوكول الاستخدام الموصى به (4 خطوات)</h2>
+            <p class="text-xs text-slate-500">اتباع الخطوات اليومية بدقة يضمن وصول المكونات الفعالة لعمق البصيلات</p>
+          </div>
+          <span class="px-4 py-1.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 text-xs font-bold">
+            مرتين يومياً (صباحاً ومساءً)
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 text-center">
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <div class="w-10 h-10 mx-auto rounded-full bg-[#064E3B] text-white font-black text-sm flex items-center justify-center">1</div>
+            <div class="text-xs font-bold text-slate-900">التطبيق (Apply)</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">وضع قطرات من السيروم مباشرة على الفروة الجافة أو بعد التجفيف بالمنشفة.</p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <div class="w-10 h-10 mx-auto rounded-full bg-[#064E3B] text-white font-black text-sm flex items-center justify-center">2</div>
+            <div class="text-xs font-bold text-slate-900">التدليك (Massage)</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">تدليك الفروة بلطف بأطراف الأصابع لمدة 5 دقائق بحركات دائرية خفيفة.</p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <div class="w-10 h-10 mx-auto rounded-full bg-[#064E3B] text-white font-black text-sm flex items-center justify-center">3</div>
+            <div class="text-xs font-bold text-slate-900">التركيز (Focus)</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">التركيز على خط الشعر الأمامي ومناطق الترقق والفراغات الأكثر احتياجاً.</p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <div class="w-10 h-10 mx-auto rounded-full bg-[#064E3B] text-white font-black text-sm flex items-center justify-center">4</div>
+            <div class="text-xs font-bold text-slate-900">التكرار (Twice Daily)</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">الاستخدام مرتين يومياً، صباحاً ومساءً، دون الحاجة لغسل الشعر بعد الاستخدام.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: CART -->
+    <div id="view-cart" class="hidden space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 space-y-4">
+          <h2 class="text-lg font-black text-slate-900">اختر باقة العلاج المناسبة:</h2>
+
+          <div onclick="setBundle('Single Starter (50ml)', 650)" class="p-5 rounded-2xl border border-slate-200 bg-white hover:border-emerald-500 cursor-pointer transition-all flex items-center justify-between">
+            <div class="space-y-1">
+              <div class="text-sm font-bold text-slate-900">عبوة واحدة تجريبية (Single Bottle 50ml)</div>
+              <div class="text-xs text-slate-500 font-medium">تكفي لمدة شهر كامل من الاستخدام المنتظم</div>
+            </div>
+            <span class="text-base font-black text-slate-900 font-mono">650 ج.م</span>
+          </div>
+
+          <div onclick="setBundle('Duo Protocol Pack (2x 50ml)', 1150)" class="p-5 rounded-2xl border-2 border-emerald-600 bg-emerald-50/40 cursor-pointer transition-all flex items-center justify-between">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-bold text-slate-900">باقة الثنائي (Duo Protocol Pack - 2x 50ml)</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-200 text-emerald-900 text-xs font-bold">الأكثر طلباً (توفير 150 ج.م)</span>
+              </div>
+              <div class="text-xs text-slate-500 font-medium">كورس مكثف لمدة شهرين مع شحن مجاني</div>
+            </div>
+            <span class="text-base font-black text-emerald-800 font-mono">1,150 ج.م</span>
+          </div>
+
+          <div onclick="setBundle('3-Month Full Transformation (3x 50ml)', 1550)" class="p-5 rounded-2xl border border-slate-200 bg-white hover:border-emerald-500 cursor-pointer transition-all flex items-center justify-between">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-bold text-slate-900">كورس التحول الكامل 90 يوم (3x 50ml)</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">أكبر توفير (خصم 400 ج.م)</span>
+              </div>
+              <div class="text-xs text-slate-500 font-medium">البروتوكول السريري الكامل مع متابعة مجانية</div>
+            </div>
+            <span class="text-base font-black text-slate-900 font-mono">1,550 ج.م</span>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs space-y-5">
+          <h3 class="text-sm font-black text-slate-900 uppercase">ملخص سلة الشراء</h3>
+          <div class="space-y-3 text-xs border-b border-slate-100 pb-4">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-600" id="cart-item-title">باقة الثنائي (2x 50ml)</span>
+              <span class="font-mono font-bold" id="cart-item-price">1,150 ج.م</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-600">مصاريف الشحن</span>
+              <span class="font-mono font-bold text-emerald-600">مجاناً (عرض اليوم)</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between text-base font-black text-slate-900">
+            <span>الإجمالي:</span>
+            <span class="font-mono text-emerald-700 text-lg" id="cart-total-price">1,150 ج.م</span>
+          </div>
+          <button onclick="alert('تم استلام طلب باقة Vortex Tricora بنجاح! سيتم التواصل لتأكيد العنوان والتوصيل فوراً.')" class="w-full py-3.5 rounded-xl bg-[#064E3B] hover:bg-[#047857] text-white font-black text-xs shadow-md transition-all flex items-center justify-center gap-2">
+            <i class="fa-solid fa-lock"></i>
+            <span>تأكيد الطلب والدفع عند الاستلام</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function switchTab(tabId) {
+      ['store', 'science', 'routine', 'cart'].forEach(id => {
+        document.getElementById(`view-${id}`).classList.add('hidden');
+        const btn = document.getElementById(`tab-btn-${id}`);
+        btn.classList.remove('bg-[#064E3B]', 'text-white');
+        btn.classList.add('bg-white', 'text-slate-700');
+      });
+
+      document.getElementById(`view-${tabId}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+      activeBtn.classList.remove('bg-white', 'text-slate-700');
+      activeBtn.classList.add('bg-[#064E3B]', 'text-white');
+    }
+
+    function setBundle(title, price) {
+      document.getElementById('cart-item-title').innerText = title;
+      document.getElementById('cart-item-price').innerText = `${price} ج.م`;
+      document.getElementById('cart-total-price').innerText = `${price} ج.م`;
+      document.getElementById('tricora-tab-cart-label').innerText = 'السلة والباقات (1)';
+      switchTab('cart');
+    }
+  </script>
+</body>
+</html>

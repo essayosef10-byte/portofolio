@@ -1,0 +1,228 @@
+.rep-set-location {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+}
+
+.rep-set-location__back {
+  margin-bottom: 16px;
+}
+
+.rep-set-location__header {
+  margin-bottom: 18px;
+}
+
+.rep-set-location__subtitle {
+  color: var(--ink);
+  opacity: 0.72;
+  font-size: 14px;
+}
+
+.rep-set-location__banner {
+  background-color: var(--true-bg);
+  color: var(--true);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.rep-set-location__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 720px) {
+  .rep-set-location__columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rep-set-location__column-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.rep-set-location__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.rep-set-location__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  text-align: right;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background-color: var(--paper);
+  cursor: pointer;
+  transition: border-color var(--transition-base), background-color var(--transition-base);
+}
+
+.rep-set-location__item:hover {
+  border-color: var(--accent-blue);
+}
+
+.rep-set-location__item--active {
+  border-color: var(--brand-ink);
+  background-color: var(--accent-blue-light);
+}
+
+.rep-set-location__item-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.rep-set-location__item-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 2px;
+  gap: 4px;
+  font-size: 12.5px;
+  color: var(--ink);
+  opacity: 0.65;
+}
+
+.rep-set-location__item-meta svg {
+  flex-shrink: 0;
+}
+
+.rep-set-location__item-dot {
+  margin: 0 1px;
+}
+
+/* ============================================
+   NEW: البحث فوق الليستتين
+   ============================================ */
+
+.rep-set-location__search {
+  position: relative;
+  margin-bottom: var(--space-3);
+}
+
+.rep-set-location__search-icon {
+  position: absolute;
+  top: 50%;
+  inset-inline-start: 14px;
+  transform: translateY(-50%);
+  color: var(--muted-light);
+  pointer-events: none;
+}
+
+.rep-set-location__search .field-input {
+  padding-inline-start: 40px;
+  padding-inline-end: 40px;
+}
+
+.rep-set-location__search-clear {
+  position: absolute;
+  top: 50%;
+  inset-inline-end: 6px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+}
+
+.rep-set-location__search-clear:hover {
+  background-color: var(--surface-hover);
+  color: var(--ink);
+}
+
+.rep-set-location__action-panel {
+  margin-top: 16px;
+}
+
+.rep-set-location__cancel-btn {
+  margin-bottom: 12px;
+}
+
+.rep-set-location__hint {
+  font-size: 13.5px;
+  color: var(--ink);
+  opacity: 0.75;
+}
+
+/* ============================================
+   NEW: خريطة تحديد الموقع الجديد + قراءات الإحداثيات
+   (كانت Inline Styles، بقت كلاسات — نفس منطق الخريطة والمقاسات)
+   ============================================ */
+
+.rep-set-location__map-wrap {
+  height: 300px;
+  width: 100%;
+  margin-bottom: var(--space-3);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  position: relative;
+  z-index: 1;
+}
+
+.rep-set-location__map {
+  height: 100%;
+  width: 100%;
+}
+
+.rep-set-location__coords {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13.5px;
+  margin-bottom: var(--space-3);
+}
+
+.rep-set-location__coords--ok {
+  color: var(--true);
+  font-weight: 700;
+}
+
+.rep-set-location__coords--empty {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.rep-set-location__locate-error {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.rep-set-location__reading {
+  margin-top: 12px;
+}
+
+.rep-set-location__accuracy {
+  font-size: 13.5px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.rep-set-location__reading-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}

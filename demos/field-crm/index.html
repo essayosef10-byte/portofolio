@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Field CRM • Medical Representative System (Live Demo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+  <style>
+    body { font-family: 'Cairo', sans-serif; background-color: #F5F3EE; color: #12203D; }
+    .crm-card { background: #FFFFFF; border: 1px solid #E4E0D6; border-radius: 14px; position: relative; overflow: hidden; }
+    .crm-card::before { content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 4px; background-color: var(--status-color, #12806F); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  
+  <!-- Floating Portfolio Navigation Bar -->
+  <div id="demo-floating-banner" class="fixed top-0 left-0 right-0 z-50 bg-[#12203D] text-white px-4 py-2.5 shadow-md flex items-center justify-between text-xs font-sans border-b border-white/10">
+    <div class="flex items-center gap-2.5">
+      <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-[10px]">
+        <i class="fa-solid fa-play"></i>
+      </span>
+      <span class="font-bold">Live Standalone Demo:</span>
+      <span class="text-[#E8A324] font-black">Field CRM (Medical Representative & GPS Geofencing)</span>
+      <span class="text-white/40 hidden sm:inline">•</span>
+      <span class="text-slate-300 hidden sm:inline">Built by Yousef Eissa (Joey)</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="../../index.html" class="px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold transition-all flex items-center gap-1.5 border border-white/20">
+        <i class="fa-solid fa-arrow-left text-[10px]"></i>
+        <span>Back to Portfolio</span>
+      </a>
+      <button onclick="document.getElementById('demo-floating-banner').style.display='none'" class="w-6 h-6 rounded-md hover:bg-white/10 flex items-center justify-center text-slate-400 hover:text-white" title="Hide Banner">
+        <i class="fa-solid fa-xmark text-xs"></i>
+      </button>
+    </div>
+  </div>
+  <div class="h-10"></div>
+    
+
+  <!-- CRM Main Navigation Header -->
+  <header class="bg-white border-b border-[#E4E0D6] sticky top-10 z-40 px-4 sm:px-8 py-3.5 shadow-xs">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="../../assets/fontebeam-icon.png" alt="Fonte Beam" class="w-9 h-9 object-contain" onerror="this.src='https://placehold.co/36x36/12203D/E8A324?text=FB'">
+        <div>
+          <span class="font-black text-[#12203D] text-lg tracking-tight font-sans">Field CRM</span>
+          <span class="text-[10px] text-slate-500 block font-bold">Fonte Beam • إدارة المناديب والزيارات الميدانية</span>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="flex items-center gap-2 text-xs font-bold">
+        <button onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="px-4 py-2 rounded-xl bg-[#12203D] text-white flex items-center gap-2 transition-all shadow-xs">
+          <i class="fa-solid fa-calendar-check text-[#E8A324]"></i>
+          <span>الزيارات والداشبورد</span>
+        </button>
+        <button onclick="switchTab('map')" id="tab-btn-map" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center gap-2 transition-all">
+          <i class="fa-solid fa-map-location-dot text-[#12806F]"></i>
+          <span>خريطة الـ GPS المباشرة</span>
+        </button>
+        <button onclick="switchTab('reports')" id="tab-btn-reports" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center gap-2 transition-all">
+          <i class="fa-solid fa-file-excel text-emerald-600"></i>
+          <span>تقارير الإدارة وتصدير Excel</span>
+        </button>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-[#12203D] text-[#E8A324] font-bold text-xs flex items-center justify-center">
+          ي ع
+        </div>
+        <div class="text-right hidden sm:block">
+          <div class="text-xs font-bold text-[#12203D]">يوسف عيسى (Joey)</div>
+          <div class="text-[10px] text-emerald-700 font-bold">مندوب مبيعات معتمد • القاهرة</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-7xl mx-auto w-full p-4 sm:p-8 space-y-6">
+
+    <!-- VIEW 1: DASHBOARD -->
+    <div id="view-dashboard" class="space-y-6">
+      
+      <!-- Top Status Banner -->
+      <div class="bg-white p-5 rounded-2xl border border-[#E4E0D6] shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div class="text-xs text-slate-500 font-bold">دورة خطة العمل: 4 أسابيع متكررة • منطقة المهندسين والدقي</div>
+          <h2 class="text-xl font-black text-[#12203D] flex items-center gap-2 mt-1">
+            <span>الأسبوع 2 • الأربعاء (اليوم 3)</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-[#FBF0DD] text-[#92400E] text-xs font-bold">
+              <i class="fa-solid fa-clock"></i> ساعات العمل الميداني: 9:00 ص - 4:00 م
+            </span>
+          </h2>
+        </div>
+        <div class="flex items-center gap-2 text-xs font-bold">
+          <button class="px-3.5 py-2 rounded-xl border border-[#E4E0D6] bg-slate-50 text-slate-700 hover:bg-slate-100">
+            <i class="fa-solid fa-chevron-right"></i> اليوم السابق
+          </button>
+          <button class="px-4 py-2 rounded-xl bg-[#12203D] text-white">
+            اليوم الحالي
+          </button>
+          <button class="px-3.5 py-2 rounded-xl border border-[#E4E0D6] bg-slate-50 text-slate-700 hover:bg-slate-100">
+            اليوم التالي <i class="fa-solid fa-chevron-left"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Metrics Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+        <div class="bg-white p-4 rounded-2xl border border-[#E4E0D6] shadow-xs">
+          <div class="text-xs text-slate-500 font-bold">إجمالي أطباء اليوم</div>
+          <div class="text-3xl font-black text-[#12203D] font-mono mt-1">10</div>
+          <div class="text-[11px] text-slate-400 font-semibold">عيادات معتمدة في الخطة</div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-[#E4E0D6] shadow-xs">
+          <div class="text-xs text-[#12806F] font-bold">زيارات تمت بنجاح</div>
+          <div class="text-3xl font-black text-[#12806F] font-mono mt-1">8</div>
+          <div class="text-[11px] text-emerald-700 font-bold">80% نسبة إنجاز اليوم</div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-[#E4E0D6] shadow-xs">
+          <div class="text-xs text-[#C98A2C] font-bold">زيارات متبقية</div>
+          <div class="text-3xl font-black text-[#C98A2C] font-mono mt-1">2</div>
+          <div class="text-[11px] text-amber-700 font-bold">قيد التنفيذ والمتابعة</div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-[#E4E0D6] shadow-xs">
+          <div class="text-xs text-[#12806F] font-bold">دقة الـ GPS</div>
+          <div class="text-3xl font-black text-[#12806F] font-mono mt-1">100%</div>
+          <div class="text-[11px] text-slate-500 font-semibold">جميعها داخل النطاق الجغرافي</div>
+        </div>
+      </div>
+
+      <!-- Doctors Visits List -->
+      <div class="space-y-4">
+        <h3 class="text-base font-black text-[#12203D]">قائمة أطباء اليوم ومسار الزيارات:</h3>
+
+        <!-- Doctor 1 -->
+        <div class="crm-card p-5 shadow-xs" style="--status-color: #12806F;">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="space-y-1.5">
+              <div class="flex items-center gap-2.5">
+                <span class="text-lg font-black text-[#12203D]">د. طارق مصطفى</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-[#E4F3EF] text-[#12806F] font-bold text-xs">Class A</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold">استشاري قلب وأوعية دموية</span>
+              </div>
+              <div class="text-xs text-slate-500 flex flex-wrap items-center gap-4">
+                <span><i class="fa-solid fa-location-dot text-slate-400"></i> برج الأطباء، ش البطل أحمد عبد العزيز، المهندسين</span>
+                <span class="text-[#12806F] font-bold font-mono"><i class="fa-solid fa-ruler"></i> المسافة المسجلة: 12 متر (داخل العيادة)</span>
+              </div>
+            </div>
+            <div class="shrink-0">
+              <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#E4F3EF] text-[#12806F] font-bold text-xs">
+                <i class="fa-solid fa-circle-check text-sm"></i>
+                <span>تمت الزيارة بنجاح (9:30 ص)</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor 2 -->
+        <div class="crm-card p-5 shadow-xs" style="--status-color: #12806F;">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="space-y-1.5">
+              <div class="flex items-center gap-2.5">
+                <span class="text-lg font-black text-[#12203D]">د. سارة السيد</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-[#E4F3EF] text-[#12806F] font-bold text-xs">Class A</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold">أخصائية أطفال وحديثي ولادة</span>
+              </div>
+              <div class="text-xs text-slate-500 flex flex-wrap items-center gap-4">
+                <span><i class="fa-solid fa-location-dot text-slate-400"></i> 14 شارع مصدق، الدقي، الجيزة</span>
+                <span class="text-[#12806F] font-bold font-mono"><i class="fa-solid fa-ruler"></i> المسافة المسجلة: 18 متر (داخل العيادة)</span>
+              </div>
+            </div>
+            <div class="shrink-0">
+              <span class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#E4F3EF] text-[#12806F] font-bold text-xs">
+                <i class="fa-solid fa-circle-check text-sm"></i>
+                <span>تمت الزيارة بنجاح (11:15 ص)</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor 3 (Pending check-in) -->
+        <div class="crm-card p-5 shadow-xs" style="--status-color: #C98A2C;">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="space-y-1.5">
+              <div class="flex items-center gap-2.5">
+                <span class="text-lg font-black text-[#12203D]">د. محمد كامل الشناوي</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-[#FBF0DD] text-[#92400E] font-bold text-xs">Class B</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold">جراحة عظام ومفاصل</span>
+              </div>
+              <div class="text-xs text-slate-500 flex flex-wrap items-center gap-4">
+                <span><i class="fa-solid fa-location-dot text-slate-400"></i> ميدان لبنان، العجوزة</span>
+                <span class="text-amber-800 font-bold"><i class="fa-solid fa-clock"></i> موعد الزيارة المحدد: 1:30 م</span>
+              </div>
+            </div>
+            <div class="shrink-0">
+              <button onclick="logVisitLive()" class="px-5 py-2.5 rounded-xl bg-[#12203D] hover:bg-[#1C2F52] text-white font-bold text-xs shadow-xs flex items-center gap-2 transition-all">
+                <i class="fa-solid fa-location-crosshairs text-[#E8A324]"></i>
+                <span>تسجيل الزيارة الآن بالـ GPS</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- VIEW 2: LEAFLET MAP -->
+    <div id="view-map" class="hidden space-y-4">
+      <div class="bg-white p-4 rounded-2xl border border-[#E4E0D6] shadow-xs flex items-center justify-between">
+        <div>
+          <h3 class="text-base font-black text-[#12203D]">خريطة الـ GPS المباشرة للعيادات وموقع المندوب</h3>
+          <p class="text-xs text-slate-500 font-medium">النقاط الخضراء تمثل الزيارات المكتملة، الصفراء قيد الانتظار، والنقطة الزرقاء تمثل موقعك الحالي</p>
+        </div>
+        <button onclick="initMap()" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs hover:bg-slate-200">
+          <i class="fa-solid fa-arrows-rotate ml-1"></i> إعادة تركيز الخريطة
+        </button>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden border border-[#E4E0D6] shadow-md bg-white">
+        <div id="crm-leaflet-map" style="height: 540px; width: 100%;"></div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: REPORTS & EXCEL EXPORT -->
+    <div id="view-reports" class="hidden space-y-4">
+      <div class="bg-white p-5 rounded-2xl border border-[#E4E0D6] shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h3 class="text-lg font-black text-[#12203D]">تقارير الزيارات الميدانية المعتمدة</h3>
+          <p class="text-xs text-slate-500 font-medium">يمكنك تنزيل شيت إكسيل رسمي (.xlsx) مطابق لمنظومة Fonte Beam الطبية</p>
+        </div>
+        <button onclick="downloadExcelReport()" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition-all flex items-center gap-2">
+          <i class="fa-solid fa-file-excel text-sm"></i>
+          <span>تحميل التقرير اليومي Excel (.xlsx)</span>
+        </button>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-[#E4E0D6] shadow-xs overflow-hidden">
+        <table class="w-full text-xs text-right border-collapse">
+          <thead>
+            <tr class="bg-slate-50 text-slate-600 border-b border-[#E4E0D6]">
+              <th class="p-3 font-bold">اسم الطبيب</th>
+              <th class="p-3 font-bold">التخصص</th>
+              <th class="p-3 font-bold">المنطقة والعيادة</th>
+              <th class="p-3 font-bold">الفئة</th>
+              <th class="p-3 font-bold">حالة الزيارة</th>
+              <th class="p-3 font-bold">دقة الـ GPS</th>
+              <th class="p-3 font-bold">وقت التسجيل</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#E4E0D6]">
+            <tr>
+              <td class="p-3 font-bold text-[#12203D]">د. طارق مصطفى</td>
+              <td class="p-3 text-slate-500">استشاري قلب وأوعية دموية</td>
+              <td class="p-3 text-slate-700">برج الأطباء - المهندسين</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold">Class A</span></td>
+              <td class="p-3 text-emerald-700 font-bold">✓ تمت الزيارة</td>
+              <td class="p-3 font-mono text-emerald-700">12 متر (داخل النطاق)</td>
+              <td class="p-3 font-mono">09:30 ص</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-[#12203D]">د. سارة السيد</td>
+              <td class="p-3 text-slate-500">أخصائية أطفال وحديثي ولادة</td>
+              <td class="p-3 text-slate-700">شارع مصدق - الدقي</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold">Class A</span></td>
+              <td class="p-3 text-emerald-700 font-bold">✓ تمت الزيارة</td>
+              <td class="p-3 font-mono text-emerald-700">18 متر (داخل النطاق)</td>
+              <td class="p-3 font-mono">11:15 ص</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-[#12203D]">د. محمد كامل الشناوي</td>
+              <td class="p-3 text-slate-500">جراحة العظام والمفاصل</td>
+              <td class="p-3 text-slate-700">ميدان لبنان - العجوزة</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-bold">Class B</span></td>
+              <td class="p-3 text-amber-800 font-bold">⏳ قيد الانتظار</td>
+              <td class="p-3 font-mono text-slate-400">مجدول</td>
+              <td class="p-3 font-mono">01:30 م</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-[#12203D]">د. أحمد حسن</td>
+              <td class="p-3 text-slate-500">أمراض باطنة وسكر</td>
+              <td class="p-3 text-slate-700">ميدان الجيزة</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold">Class A</span></td>
+              <td class="p-3 text-slate-500 font-bold">مجدول</td>
+              <td class="p-3 font-mono text-slate-400">مجدول</td>
+              <td class="p-3 font-mono">03:00 م</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function switchTab(tabId) {
+      ['dashboard', 'map', 'reports'].forEach(id => {
+        document.getElementById(`view-${id}`).classList.add('hidden');
+        const btn = document.getElementById(`tab-btn-${id}`);
+        btn.classList.remove('bg-[#12203D]', 'text-white');
+        btn.classList.add('bg-slate-100', 'text-slate-700');
+      });
+
+      document.getElementById(`view-${tabId}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+      activeBtn.classList.remove('bg-slate-100', 'text-slate-700');
+      activeBtn.classList.add('bg-[#12203D]', 'text-white');
+
+      if (tabId === 'map') {
+        setTimeout(initMap, 150);
+      }
+    }
+
+    let mapInstance = null;
+    function initMap() {
+      if (mapInstance) {
+        mapInstance.invalidateSize();
+        return;
+      }
+
+      const cairo = [30.0444, 31.2357];
+      mapInstance = L.map('crm-leaflet-map').setView(cairo, 13);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(mapInstance);
+
+      const greenIcon = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
+
+      const goldIcon = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
+
+      const blueIcon = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
+
+      const doctors = [
+        { name: "د. طارق مصطفى", spec: "استشاري قلب وأوعية دموية", area: "برج الأطباء - المهندسين", lat: 30.0524, lng: 31.2050, visited: true },
+        { name: "د. سارة السيد", spec: "أخصائية أطفال", area: "شارع مصدق - الدقي", lat: 30.0410, lng: 31.2180, visited: true },
+        { name: "د. محمد كامل الشناوي", spec: "جراحة العظام", area: "ميدان لبنان - العجوزة", lat: 30.0600, lng: 31.2100, visited: false },
+        { name: "د. أحمد حسن", spec: "أمراض باطنة وسكر", area: "ميدان الجيزة", lat: 30.0280, lng: 31.2120, visited: false }
+      ];
+
+      doctors.forEach(doc => {
+        const icon = doc.visited ? greenIcon : goldIcon;
+        L.marker([doc.lat, doc.lng], { icon: icon }).addTo(mapInstance)
+          .bindPopup(`<strong>${doc.name}</strong><br>${doc.spec}<br>${doc.area}<br><span style="color:${doc.visited ? '#12806F':'#C98A2C'};">${doc.visited ? '✓ تمت الزيارة بنجاح' : '⏳ قيد الانتظار'}</span>`);
+      });
+
+      const rep = L.marker([30.0450, 31.2160], { icon: blueIcon }).addTo(mapInstance);
+      rep.bindPopup("<strong>موقع المندوب الحي (يوسف عيسى)</strong><br>دقة الـ GPS: 4.8 متر").openPopup();
+
+      L.circle([30.0450, 31.2160], {
+        color: '#12203D',
+        fillColor: '#12203D',
+        fillOpacity: 0.12,
+        radius: 1000
+      }).addTo(mapInstance);
+    }
+
+    function logVisitLive() {
+      alert("تم فحص الموقع الجغرافي بالـ GPS بنجاح:\nالموقع: ميدان لبنان - العجوزة\nالمسافة إلى عيادة د. محمد كامل: 14 متر (داخل النطاق المسموح) ✓\nتم تسجيل الزيارة بنجاح ومزامنتها مع قاعدة بيانات Supabase!");
+    }
+
+    function downloadExcelReport() {
+      const data = [
+        ["تقرير زيارات مندوبي الدعاية الطبية - شركة Fonte Beam"],
+        ["التاريخ", new Date().toLocaleDateString('ar-EG'), "المندوب", "يوسف عيسى (Joey)"],
+        [],
+        ["اسم الطبيب", "التخصص", "المنطقة والعيادة", "الفئة", "الحالة", "دقة GPS", "وقت الزيارة"],
+        ["د. طارق مصطفى", "استشاري قلب وأوعية دموية", "برج الأطباء - المهندسين", "Class A", "تمت الزيارة", "12 متر (داخل النطاق)", "09:30 ص"],
+        ["د. سارة السيد", "أخصائية أطفال وحديثي ولادة", "شارع مصدق - الدقي", "Class A", "تمت الزيارة", "18 متر (داخل النطاق)", "11:15 ص"],
+        ["د. محمد كامل الشناوي", "جراحة العظام والمفاصل", "ميدان لبنان - العجوزة", "Class B", "قيد الانتظار", "مجدول", "01:30 م"],
+        ["د. أحمد حسن", "أمراض باطنة وسكر", "ميدان الجيزة", "Class A", "مجدول", "مجدول", "03:00 م"]
+      ];
+
+      const ws = XLSX.utils.aoa_to_sheet(data);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Daily_Visits");
+      XLSX.writeFile(wb, "Field_CRM_Medical_Visits_Report.xlsx");
+    }
+  </script>
+</body>
+</html>

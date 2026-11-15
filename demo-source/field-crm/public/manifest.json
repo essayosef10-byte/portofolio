@@ -1,0 +1,20 @@
+{
+  "short_name": "Field CRM",
+  "name": "Field CRM - نظام إدارة العملاء الميداني",
+  "icons": [
+    {
+      "src": "fontebeam-icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "fontebeam-logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#12203D",
+  "background_color": "#12203D"
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#07132f" />
+    <meta
+      name="description"
+      content="CEO by Vortex — science, made clear, for every student in Egypt."
+    />
+    <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon.png" />
+    <title>CEO by Vortex — Science, made clear.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap"
+    />
+    <script src="%PUBLIC_URL%/theme-boot.js"></script>
+    <script>
+      // Anti-flash: when the cinematic intro will play on "/", paint the html
+      // dark before React loads so there is no white flash.
+      (function () {
+        try {
+          var path = window.location.pathname || '/';
+          var isRoot = path === '/' || path === '/index.html' || path.indexOf('/index.html') === path.length - 11;
+          if (!isRoot) return;
+          var params = new URLSearchParams(window.location.search);
+          if (params.get('intro') === '0') return;
+          var seen = window.sessionStorage.getItem('ceo-intro-seen');
+          if (seen) return;
+          var reduce =
+            window.matchMedia &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (reduce) return;
+          document.documentElement.style.background = '#050D2B';
+        } catch (e) {
+          /* sessionStorage unavailable or blocked */
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yara Shop • Modest Fashion & Hijab Boutique (Live Demo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body { font-family: 'Cairo', sans-serif; background-color: #FFF8F8; color: #0F172A; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  
+  <!-- Floating Portfolio Navigation Bar -->
+  <div id="demo-floating-banner" class="fixed top-0 left-0 right-0 z-50 bg-rose-950 text-white px-4 py-2.5 shadow-md flex items-center justify-between text-xs font-sans border-b border-white/10">
+    <div class="flex items-center gap-2.5">
+      <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-[10px]">
+        <i class="fa-solid fa-play"></i>
+      </span>
+      <span class="font-bold">Live Standalone Demo:</span>
+      <span class="text-rose-300 font-black">Yara Shop (Modest Fashion & Hijab Boutique E-Commerce)</span>
+      <span class="text-white/40 hidden sm:inline">•</span>
+      <span class="text-slate-300 hidden sm:inline">Built by Yousef Eissa (Joey)</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="../../index.html" class="px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold transition-all flex items-center gap-1.5 border border-white/20">
+        <i class="fa-solid fa-arrow-left text-[10px]"></i>
+        <span>Back to Portfolio</span>
+      </a>
+      <button onclick="document.getElementById('demo-floating-banner').style.display='none'" class="w-6 h-6 rounded-md hover:bg-white/10 flex items-center justify-center text-slate-400 hover:text-white" title="Hide Banner">
+        <i class="fa-solid fa-xmark text-xs"></i>
+      </button>
+    </div>
+  </div>
+  <div class="h-10"></div>
+    
+
+  <header class="bg-white/95 backdrop-blur-md border-b border-rose-200/80 sticky top-10 z-40 px-4 sm:px-8 py-3.5 shadow-xs">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-500 to-pink-500 flex items-center justify-center font-black text-white shadow-xs">
+          <i class="fa-solid fa-bag-shopping text-lg"></i>
+        </div>
+        <div>
+          <span class="font-black text-slate-900 text-lg tracking-tight font-sans">Yara Shop</span>
+          <span class="text-[10px] text-rose-600 block font-bold">بوتيك الحجاب والأزياء الراقية • React & Tailwind CSS E-Commerce</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 text-xs font-bold">
+        <button onclick="switchTab('catalog')" id="tab-btn-catalog" class="px-4 py-2 rounded-xl bg-rose-600 text-white flex items-center gap-2 transition-all shadow-xs">
+          <i class="fa-solid fa-store"></i>
+          <span>كتالوج المتجر</span>
+        </button>
+        <button onclick="switchTab('cart')" id="tab-btn-cart" class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 flex items-center gap-2 transition-all">
+          <i class="fa-solid fa-cart-shopping text-pink-600"></i>
+          <span id="nav-cart-pill">سلة التسوق (2)</span>
+        </button>
+        <button onclick="switchTab('admin')" id="tab-btn-admin" class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 flex items-center gap-2 transition-all">
+          <i class="fa-solid fa-chart-line text-indigo-600"></i>
+          <span>لوحة المخزون</span>
+        </button>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 rounded-full bg-rose-50 text-rose-700 border border-rose-200 text-xs font-bold" id="header-cart-summary">
+          🛒 2 قطعة (505 ج.م)
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-7xl mx-auto w-full p-4 sm:p-8 space-y-6">
+
+    <!-- TAB 1: CATALOG -->
+    <div id="view-catalog" class="space-y-6">
+      <div class="flex items-center gap-2 overflow-x-auto pb-1" id="category-filter-buttons">
+        <button onclick="filterCategory('الكل')" class="cat-pill px-4 py-1.5 rounded-full text-xs font-bold bg-rose-600 text-white shadow-2xs shrink-0">الكل</button>
+        <button onclick="filterCategory('شيفون')" class="cat-pill px-4 py-1.5 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 shrink-0">شيفون</button>
+        <button onclick="filterCategory('جيرسي')" class="cat-pill px-4 py-1.5 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 shrink-0">جيرسي</button>
+        <button onclick="filterCategory('كريب')" class="cat-pill px-4 py-1.5 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 shrink-0">كريب</button>
+        <button onclick="filterCategory('تركي')" class="cat-pill px-4 py-1.5 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 shrink-0">تركي</button>
+        <button onclick="filterCategory('عباية')" class="cat-pill px-4 py-1.5 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 shrink-0">عباية</button>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6" id="products-grid">
+        <div class="product-item bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3 flex flex-col justify-between" data-cat="شيفون">
+          <div class="space-y-2">
+            <div class="h-44 rounded-xl bg-gradient-to-tr from-rose-100 to-pink-50 flex items-center justify-center text-rose-400 text-5xl relative">
+              <i class="fa-solid fa-vest text-rose-400"></i>
+              <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-rose-600 text-white font-black text-[10px]">خصم 18%</span>
+            </div>
+            <div class="text-[10px] text-rose-600 font-bold uppercase font-mono">طرح وشيفون فاخر</div>
+            <h3 class="text-sm font-bold text-slate-900">حجاب شيفون كويتي وردي</h3>
+            <div class="flex items-center gap-1 text-[10px] text-amber-500">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <span class="text-slate-400 mr-1">(48 تقييم)</span>
+            </div>
+          </div>
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="font-mono font-black text-slate-900 text-base">285 ج.م</span>
+              <span class="text-xs text-slate-400 line-through mr-1 font-mono">350 ج.م</span>
+            </div>
+            <button onclick="addCart('حجاب شيفون كويتي وردي', 285)" class="px-3.5 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-2xs flex items-center gap-1">
+              <i class="fa-solid fa-plus text-[10px]"></i>
+              <span>أضف</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="product-item bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3 flex flex-col justify-between" data-cat="جيرسي">
+          <div class="space-y-2">
+            <div class="h-44 rounded-xl bg-gradient-to-tr from-slate-200 to-slate-100 flex items-center justify-center text-slate-700 text-5xl relative">
+              <i class="fa-solid fa-shirt text-slate-700"></i>
+              <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-slate-900 text-white font-bold text-[10px]">قطن 100%</span>
+            </div>
+            <div class="text-[10px] text-slate-600 font-bold uppercase font-mono">جيرسي يومي عملي</div>
+            <h3 class="text-sm font-bold text-slate-900">حجاب جيرسي قطني أسود ملكي</h3>
+            <div class="flex items-center gap-1 text-[10px] text-amber-500">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+              <span class="text-slate-400 mr-1">(32 تقييم)</span>
+            </div>
+          </div>
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+            <span class="font-mono font-black text-slate-900 text-base">220 ج.م</span>
+            <button onclick="addCart('حجاب جيرسي أسود ملكي', 220)" class="px-3.5 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-2xs flex items-center gap-1">
+              <i class="fa-solid fa-plus text-[10px]"></i>
+              <span>أضف</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="product-item bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3 flex flex-col justify-between" data-cat="كريب">
+          <div class="space-y-2">
+            <div class="h-44 rounded-xl bg-gradient-to-tr from-amber-100 to-orange-50 flex items-center justify-center text-amber-500 text-5xl relative">
+              <i class="fa-solid fa-ribbon text-amber-600"></i>
+              <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-amber-500 text-white font-bold text-[10px]">أحدث إصدار</span>
+            </div>
+            <div class="text-[10px] text-amber-700 font-bold uppercase font-mono">كريب ليزر سادة</div>
+            <h3 class="text-sm font-bold text-slate-900">حجاب كريب سعودي بيج أنيق</h3>
+            <div class="flex items-center gap-1 text-[10px] text-amber-500">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <span class="text-slate-400 mr-1">(61 تقييم)</span>
+            </div>
+          </div>
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="font-mono font-black text-slate-900 text-base">310 ج.م</span>
+              <span class="text-xs text-slate-400 line-through mr-1 font-mono">380 ج.م</span>
+            </div>
+            <button onclick="addCart('حجاب كريب سعودي بيج', 310)" class="px-3.5 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-2xs flex items-center gap-1">
+              <i class="fa-solid fa-plus text-[10px]"></i>
+              <span>أضف</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: CART -->
+    <div id="view-cart" class="hidden space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-white p-6 rounded-3xl border border-slate-200 shadow-xs space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+            <h2 class="text-base font-black text-slate-900 flex items-center gap-2">
+              <i class="fa-solid fa-cart-shopping text-rose-600"></i>
+              <span>محتويات سلة المشتريات</span>
+            </h2>
+            <span class="text-xs text-slate-500" id="cart-count-label">2 منتجات مختارة</span>
+          </div>
+
+          <div class="space-y-3">
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-500 flex items-center justify-center font-bold text-lg">
+                  <i class="fa-solid fa-vest"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-bold text-slate-900">حجاب شيفون كويتي وردي</div>
+                  <div class="text-xs text-slate-500 font-mono">285 ج.م للقطعة</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <button onclick="changeQty(1, -1)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 font-bold">-</button>
+                <span class="text-sm font-mono font-black" id="q1">1</span>
+                <button onclick="changeQty(1, 1)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 font-bold">+</button>
+                <span class="text-sm font-mono font-bold text-slate-900 mr-2" id="tot1">285 ج.م</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-lg">
+                  <i class="fa-solid fa-shirt"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-bold text-slate-900">حجاب جيرسي قطني أسود ملكي</div>
+                  <div class="text-xs text-slate-500 font-mono">220 ج.م للقطعة</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <button onclick="changeQty(2, -1)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 font-bold">-</button>
+                <span class="text-sm font-mono font-black" id="q2">1</span>
+                <button onclick="changeQty(2, 1)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 font-bold">+</button>
+                <span class="text-sm font-mono font-bold text-slate-900 mr-2" id="tot2">220 ج.م</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs space-y-5">
+          <h3 class="text-sm font-black text-slate-900 uppercase">حساب الفاتورة والشحن</h3>
+          <div class="space-y-3 text-xs border-b border-slate-100 pb-4">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-600">المجموع الفرعي:</span>
+              <span class="font-mono font-bold" id="cart-subtotal">505 ج.م</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-600">الشحن لـ القاهرة والجيزة:</span>
+              <span class="font-mono font-bold">45 ج.م</span>
+            </div>
+            <div class="flex items-center justify-between text-emerald-600 font-bold" id="discount-row" style="display:none;">
+              <span>كوبون الخصم (YARA10):</span>
+              <span class="font-mono" id="discount-val">- 50.5 ج.م</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <input id="coupon-code" type="text" placeholder="كود الخصم (جرب: YARA10)" class="flex-1 px-3 py-2 rounded-xl border border-slate-200 text-xs font-mono uppercase focus:outline-hidden">
+            <button onclick="applyCoupon()" class="px-4 py-2 rounded-xl bg-slate-900 text-white font-bold text-xs">تطبيق</button>
+          </div>
+
+          <div class="flex items-center justify-between text-base font-black text-slate-900 pt-2">
+            <span>الإجمالي النهائي:</span>
+            <span class="font-mono text-rose-600 text-lg" id="grand-total">550 ج.م</span>
+          </div>
+
+          <button onclick="alert('شكراً لطلبك من Yara Shop! سيتم تجهيز الشحنة والتوصيل خلال 48 ساعة.')" class="w-full py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-xs transition-all flex items-center justify-center gap-2">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span>إتمام الطلب الآن (الدفع عند الاستلام)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: ADMIN -->
+    <div id="view-admin" class="hidden space-y-6">
+      <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs space-y-5">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div>
+            <h2 class="text-lg font-black text-slate-900">لوحة تحكم المخزون والمبيعات (Store Admin)</h2>
+            <p class="text-xs text-slate-500 font-medium">متابعة المخزون الحي وكميات القطع المتبقية وإجمالي الطلبات اليومية</p>
+          </div>
+          <span class="px-3.5 py-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 text-xs font-bold font-mono">
+            Today's Sales: 18,450 EGP
+          </span>
+        </div>
+
+        <table class="w-full text-xs text-right border-collapse">
+          <thead>
+            <tr class="bg-slate-50 text-slate-600 border-b border-slate-200">
+              <th class="p-3 font-bold">اسم المنتج</th>
+              <th class="p-3 font-bold">التصنيف</th>
+              <th class="p-3 font-bold">السعر</th>
+              <th class="p-3 font-bold">القطع بالمخزن</th>
+              <th class="p-3 font-bold">حالة التوفر</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr>
+              <td class="p-3 font-bold text-slate-900">حجاب شيفون كويتي وردي</td>
+              <td class="p-3 text-slate-500">شيفون</td>
+              <td class="p-3 font-mono font-bold">285 ج.م</td>
+              <td class="p-3 font-mono">42 قطعة</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold">متوفر</span></td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-slate-900">حجاب جيرسي قطني أسود ملكي</td>
+              <td class="p-3 text-slate-500">جيرسي</td>
+              <td class="p-3 font-mono font-bold">220 ج.م</td>
+              <td class="p-3 font-mono">18 قطعة</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold">متوفر</span></td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-slate-900">عباية استقبال ملكية بتطريز يدوي</td>
+              <td class="p-3 text-slate-500">عباية</td>
+              <td class="p-3 font-mono font-bold">890 ج.م</td>
+              <td class="p-3 font-mono text-rose-600 font-bold">3 قطع فقط</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded bg-rose-100 text-rose-800 text-[10px] font-bold">أوشك على النفاد</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function switchTab(tabId) {
+      ['catalog', 'cart', 'admin'].forEach(id => {
+        document.getElementById(`view-${id}`).classList.add('hidden');
+        const btn = document.getElementById(`tab-btn-${id}`);
+        btn.classList.remove('bg-rose-600', 'text-white');
+        btn.classList.add('bg-white', 'text-slate-700');
+      });
+
+      document.getElementById(`view-${tabId}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+      activeBtn.classList.remove('bg-white', 'text-slate-700');
+      activeBtn.classList.add('bg-rose-600', 'text-white');
+    }
+
+    function filterCategory(cat) {
+      document.querySelectorAll('.cat-pill').forEach(b => {
+        b.className = 'cat-pill px-4 py-1.5 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 shrink-0';
+      });
+      event.target.className = 'cat-pill px-4 py-1.5 rounded-full text-xs font-bold bg-rose-600 text-white shadow-2xs shrink-0';
+
+      document.querySelectorAll('.product-item').forEach(it => {
+        const itemCat = it.getAttribute('data-cat');
+        it.style.display = (cat === 'الكل' || itemCat === cat) ? 'flex' : 'none';
+      });
+    }
+
+    let cartState = { q1: 1, p1: 285, q2: 1, p2: 220, disc: 0 };
+
+    function changeQty(n, delta) {
+      if (n === 1) {
+        cartState.q1 = Math.max(0, cartState.q1 + delta);
+        document.getElementById('q1').innerText = cartState.q1;
+        document.getElementById('tot1').innerText = `${cartState.q1 * cartState.p1} ج.م`;
+      } else {
+        cartState.q2 = Math.max(0, cartState.q2 + delta);
+        document.getElementById('q2').innerText = cartState.q2;
+        document.getElementById('tot2').innerText = `${cartState.q2 * cartState.p2} ج.م`;
+      }
+      recalc();
+    }
+
+    function recalc() {
+      const sub = (cartState.q1 * cartState.p1) + (cartState.q2 * cartState.p2);
+      const items = cartState.q1 + cartState.q2;
+      const ship = sub > 0 ? 45 : 0;
+      const grand = Math.max(0, sub + ship - cartState.disc);
+
+      document.getElementById('cart-subtotal').innerText = `${sub} ج.م`;
+      document.getElementById('grand-total').innerText = `${grand} ج.م`;
+      document.getElementById('cart-count-label').innerText = `${items} منتجات مختارة`;
+      document.getElementById('nav-cart-pill').innerText = `سلة التسوق (${items})`;
+      document.getElementById('header-cart-summary').innerText = `🛒 ${items} قطعة (${grand} ج.م)`;
+    }
+
+    function addCart(title, price) {
+      alert(`تمت إضافة "${title}" (${price} ج.م) إلى سلة المشتريات بنجاح!`);
+      cartState.q1 += 1;
+      changeQty(1, 0);
+    }
+
+    function applyCoupon() {
+      const code = document.getElementById('coupon-code').value.trim().toUpperCase();
+      if (code === 'YARA10') {
+        const sub = (cartState.q1 * cartState.p1) + (cartState.q2 * cartState.p2);
+        cartState.disc = Math.round(sub * 0.1);
+        document.getElementById('discount-row').style.display = 'flex';
+        document.getElementById('discount-val').innerText = `- ${cartState.disc} ج.م`;
+        recalc();
+        alert('تم تطبيق كود الخصم YARA10 بنجاح! حصلت على خصم 10%');
+      } else {
+        alert('كود الخصم غير صحيح. جرب كود: YARA10');
+      }
+    }
+  </script>
+</body>
+</html>

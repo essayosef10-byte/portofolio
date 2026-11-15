@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CEO by Vortex • Executive Diplomas & Camps (Live Demo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body { font-family: 'Cairo', sans-serif; background-color: #FAF9F6; color: #0F172A; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  
+  <!-- Floating Portfolio Navigation Bar -->
+  <div id="demo-floating-banner" class="fixed top-0 left-0 right-0 z-50 bg-[#12203D] text-white px-4 py-2.5 shadow-md flex items-center justify-between text-xs font-sans border-b border-white/10">
+    <div class="flex items-center gap-2.5">
+      <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-[10px]">
+        <i class="fa-solid fa-play"></i>
+      </span>
+      <span class="font-bold">Live Standalone Demo:</span>
+      <span class="text-[#E8A324] font-black">CEO by Vortex (Executive Leadership & Business Camps)</span>
+      <span class="text-white/40 hidden sm:inline">•</span>
+      <span class="text-slate-300 hidden sm:inline">Built by Yousef Eissa (Joey)</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="../../index.html" class="px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold transition-all flex items-center gap-1.5 border border-white/20">
+        <i class="fa-solid fa-arrow-left text-[10px]"></i>
+        <span>Back to Portfolio</span>
+      </a>
+      <button onclick="document.getElementById('demo-floating-banner').style.display='none'" class="w-6 h-6 rounded-md hover:bg-white/10 flex items-center justify-center text-slate-400 hover:text-white" title="Hide Banner">
+        <i class="fa-solid fa-xmark text-xs"></i>
+      </button>
+    </div>
+  </div>
+  <div class="h-10"></div>
+    
+
+  <!-- Header -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-amber-200/80 sticky top-10 z-40 px-4 sm:px-8 py-3.5 shadow-xs">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="../../assets/CEOVortex.png" alt="CEO Vortex" class="w-10 h-10 object-contain" onerror="this.src='https://placehold.co/40x40/12203D/E8A324?text=CEO'">
+        <div>
+          <span class="font-black text-[#12203D] text-lg tracking-tight font-sans">CEO by Vortex</span>
+          <span class="text-[10px] text-amber-700 block font-bold">أكاديمية القيادة والأعمال التنفيذية • React 18 & Supabase</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 text-xs font-bold">
+        <button onclick="switchTab('home')" id="tab-btn-home" class="px-4 py-2 rounded-xl bg-[#12203D] text-[#E8A324] flex items-center gap-2 transition-all shadow-xs">
+          <i class="fa-solid fa-compass"></i>
+          <span>الواجهة الرئيسية</span>
+        </button>
+        <button onclick="switchTab('camps')" id="tab-btn-camps" class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 flex items-center gap-2 transition-all">
+          <i class="fa-solid fa-graduation-cap text-amber-600"></i>
+          <span>المعسكرات والدبلومات</span>
+        </button>
+        <button onclick="switchTab('player')" id="tab-btn-player" class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 flex items-center gap-2 transition-all">
+          <i class="fa-solid fa-play text-indigo-600"></i>
+          <span>مشغل المحاضرات</span>
+        </button>
+        <button onclick="switchTab('account')" id="tab-btn-account" class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 flex items-center gap-2 transition-all">
+          <i class="fa-solid fa-id-card text-emerald-600"></i>
+          <span>حسابي ودراستي</span>
+        </button>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 rounded-full bg-amber-50 border border-amber-300 text-amber-900 text-xs font-mono font-bold">
+          Student ID: VRTX-8942
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-7xl mx-auto w-full p-4 sm:p-8 space-y-6">
+
+    <!-- TAB 1: HOME -->
+    <div id="view-home" class="space-y-6">
+      <div class="bg-gradient-to-r from-amber-500/10 via-orange-500/5 to-slate-100 p-8 rounded-3xl border border-amber-200/80 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-amber-300 text-amber-800 text-xs font-bold shadow-2xs">
+          <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+          أهلًا بك في مجتمع Vortex التنفيذي
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-black text-[#12203D] leading-tight">
+          العلم، بشكل واضح. <br/>
+          <span class="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">لكل طالب وقائد أعمال في مصر.</span>
+        </h1>
+        <p class="text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed font-medium">
+          العلم يُقاس بمقدار الفهم. سيشنات ودبلومات وكورسات وكامبات، لعقول تريد أكثر من مجرد درجة.
+        </p>
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <button onclick="switchTab('camps')" class="px-6 py-3 rounded-xl bg-[#12203D] hover:bg-[#1C2F52] text-[#E8A324] font-bold text-xs shadow-xs transition-all flex items-center gap-2">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>استكشف الدبلومات والمعسكرات المتاحة</span>
+          </button>
+          <button onclick="switchTab('player')" class="px-5 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-bold text-xs shadow-2xs transition-all flex items-center gap-2">
+            <i class="fa-solid fa-play text-amber-600"></i>
+            <span>مشاهدة المحاضرة المفتوحة</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Real Marquee -->
+      <div class="overflow-hidden py-3.5 px-6 bg-white rounded-2xl border border-amber-200/60 shadow-xs">
+        <div class="flex items-center justify-between text-xs font-bold text-amber-900 tracking-wider">
+          <span class="flex items-center gap-2"><i class="fa-solid fa-star text-amber-500"></i> تَعلَّم</span>
+          <span class="text-slate-300">•</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-lightbulb text-amber-500"></i> افهَم</span>
+          <span class="text-slate-300">•</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-heart text-amber-500"></i> استَمتِع</span>
+          <span class="text-slate-300">•</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-trophy text-amber-500"></i> حَقِّق</span>
+          <span class="text-slate-300">•</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-bullseye text-amber-500"></i> نَجاح</span>
+          <span class="text-slate-300">•</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-fire text-amber-500"></i> تَركيز</span>
+          <span class="text-slate-300">•</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-thumbs-up text-amber-500"></i> تَشجيع</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-3 gap-4 text-center">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <div class="text-3xl font-black text-[#12203D] font-mono">1,450+</div>
+          <div class="text-xs text-slate-500 font-bold mt-1">طالب وقائد متدرب</div>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <div class="text-3xl font-black text-amber-600 font-mono">48 معسكر</div>
+          <div class="text-xs text-slate-500 font-bold mt-1">في مختلف قطاعات الأعمال</div>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs">
+          <div class="text-3xl font-black text-emerald-600 font-mono">98%</div>
+          <div class="text-xs text-slate-500 font-bold mt-1">نسبة رضا المتدربين</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: CAMPS -->
+    <div id="view-camps" class="hidden space-y-6">
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex items-center justify-between">
+        <div>
+          <h2 class="text-xl font-black text-[#12203D]">الدبلومات والمعسكرات التنفيذية المتاحة</h2>
+          <p class="text-xs text-slate-500 font-medium">احجز مقعدك في المعسكرات القادمة واستمتع بخصم الحجز المبكر</p>
+        </div>
+        <span class="px-4 py-1.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 text-xs font-bold">
+          الحجز متاح حتى اكتمال المقاعد
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-4 flex flex-col justify-between">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[11px] font-bold">معسكر مكثف</span>
+              <span class="text-xs font-bold text-rose-600">باقي 3 مقاعد فقط!</span>
+            </div>
+            <h3 class="text-base font-bold text-[#12203D]">معسكر قيادة الأزمات وإدارة المخاطر</h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              محاكاة تفاعلية واقعية لقرارات الـ Boardroom في أوقات الهزات السوقية وانهيار سلاسل الإمداد.
+            </p>
+            <div class="text-xs font-bold text-slate-700 pt-1 space-y-1">
+              <div><i class="fa-regular fa-calendar text-amber-600 ml-1.5"></i> يبدأ: 15 مارس 2026</div>
+              <div><i class="fa-regular fa-clock text-amber-600 ml-1.5"></i> المدة: 3 أسابيع (18 ساعة تدريبية)</div>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-lg font-black text-[#12203D] font-mono">2,400 ج.م</span>
+            <button onclick="bookProgram('معسكر قيادة الأزمات', 2400)" class="px-4 py-2 rounded-xl bg-[#12203D] hover:bg-[#1C2F52] text-[#E8A324] font-bold text-xs shadow-2xs transition-all">
+              احجز مكانك
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-4 flex flex-col justify-between">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-800 text-[11px] font-bold">دبلومة مهنية</span>
+              <span class="text-xs font-bold text-emerald-600">شهادة معتمدة</span>
+            </div>
+            <h3 class="text-base font-bold text-[#12203D]">دبلومة تأسيس وتوسيع الشركات الناشئة</h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              من الفكرة إلى الـ Pitch Deck وجولات التمويل الاستثماري (Seed & Series A) بالتعاون مع مستثمرين.
+            </p>
+            <div class="text-xs font-bold text-slate-700 pt-1 space-y-1">
+              <div><i class="fa-regular fa-calendar text-amber-600 ml-1.5"></i> يبدأ: 1 أبريل 2026</div>
+              <div><i class="fa-regular fa-clock text-amber-600 ml-1.5"></i> المدة: 8 أسابيع (36 ساعة)</div>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-lg font-black text-[#12203D] font-mono">4,800 ج.م</span>
+            <button onclick="bookProgram('دبلومة تأسيس الشركات الناشئة', 4800)" class="px-4 py-2 rounded-xl bg-[#12203D] hover:bg-[#1C2F52] text-[#E8A324] font-bold text-xs shadow-2xs transition-all">
+              احجز مكانك
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs space-y-4 flex flex-col justify-between">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">سيشن مباشر</span>
+              <span class="text-xs font-bold text-slate-500">مفتوح للجميع</span>
+            </div>
+            <h3 class="text-base font-bold text-[#12203D]">فنون التفاوض الصعب وإغلاق الصفقات</h3>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">
+              استراتيجيات التفاوض المتقدمة المستوحاة من برامج هارفارد لإدارة النزاعات التجارية.
+            </p>
+            <div class="text-xs font-bold text-slate-700 pt-1 space-y-1">
+              <div><i class="fa-regular fa-calendar text-amber-600 ml-1.5"></i> يبدأ: السبت القادم</div>
+              <div><i class="fa-regular fa-clock text-amber-600 ml-1.5"></i> المدة: 4 ساعات مكثفة</div>
+            </div>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-lg font-black text-emerald-700 font-mono">مجاني • رعاة</span>
+            <button onclick="bookProgram('سيشن فنون التفاوض', 0)" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-2xs transition-all">
+              تسجيل مجاني
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: PLAYER -->
+    <div id="view-player" class="hidden space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-slate-900 rounded-3xl overflow-hidden border border-slate-800 shadow-xl flex flex-col justify-between min-h-[420px]">
+          <div class="p-4 flex items-center justify-between border-b border-slate-800 bg-slate-950/80">
+            <div class="flex items-center gap-2 text-xs font-bold text-white">
+              <i class="fa-solid fa-circle-play text-amber-400"></i>
+              <span id="player-title">المحاضرة 02: استراتيجيات التسعير المقاومة للتضخم</span>
+            </div>
+            <span class="px-2 py-0.5 rounded-md bg-amber-400/20 text-amber-300 text-[10px] font-mono">HD 1080p</span>
+          </div>
+
+          <div class="flex-1 flex flex-col items-center justify-center p-8 text-center space-y-4">
+            <div class="w-20 h-20 rounded-full bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-400 text-3xl cursor-pointer hover:scale-110 transition-transform shadow-lg" onclick="alert('جارٍ تشغيل المحاضرة المسجلة بجودة عالية ومزامنة الوقت مع Supabase!')">
+              <i class="fa-solid fa-play ml-1"></i>
+            </div>
+            <p class="text-xs text-slate-400 font-medium">اضغط لبدء المشاهدة ومزامنة تقدمك الأكاديمي</p>
+          </div>
+
+          <div class="p-4 bg-slate-950 border-t border-slate-800 flex items-center justify-between text-xs text-slate-300">
+            <span>المتبقي: 24 دقيقة من أصل 48 دقيقة</span>
+            <div class="w-1/3 bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div class="bg-amber-400 h-full w-[50%]"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-xs space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <h3 class="text-sm font-black text-slate-900 flex items-center gap-2">
+              <i class="fa-solid fa-list-ol text-amber-600"></i>
+              <span>قائمة محاضرات البرنامج</span>
+            </h3>
+            <span class="text-xs text-slate-500 font-mono">4 محاضرات</span>
+          </div>
+
+          <div class="space-y-2.5">
+            <div onclick="setLecture('المحاضرة 01: مدخل الفكر الاستراتيجي للشركات')" class="p-3 rounded-xl border border-emerald-200 bg-emerald-50/50 flex items-center justify-between cursor-pointer hover:bg-emerald-100/50 transition-colors">
+              <div>
+                <div class="text-xs font-bold text-slate-900">المحاضرة 01: الفكر الاستراتيجي</div>
+                <div class="text-[10px] text-slate-500 font-mono">42 دقيقة • مكتملة 100%</div>
+              </div>
+              <i class="fa-solid fa-circle-check text-emerald-600 text-sm"></i>
+            </div>
+
+            <div onclick="setLecture('المحاضرة 02: استراتيجيات التسعير المقاومة للتضخم')" class="p-3 rounded-xl border border-amber-300 bg-amber-50/70 flex items-center justify-between cursor-pointer">
+              <div>
+                <div class="text-xs font-bold text-amber-950">المحاضرة 02: استراتيجيات التسعير</div>
+                <div class="text-[10px] text-amber-800 font-mono">48 دقيقة • جارية المشاهدة</div>
+              </div>
+              <i class="fa-solid fa-play text-amber-600 text-sm"></i>
+            </div>
+
+            <div onclick="setLecture('المحاضرة 03: تحليل سلاسل الإمداد والخدمات اللوجستية')" class="p-3 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-between cursor-pointer hover:bg-slate-100 transition-colors">
+              <div>
+                <div class="text-xs font-bold text-slate-800">المحاضرة 03: سلاسل الإمداد</div>
+                <div class="text-[10px] text-slate-500 font-mono">55 دقيقة • القادمة</div>
+              </div>
+              <i class="fa-solid fa-circle-pause text-slate-400 text-sm"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: ACCOUNT -->
+    <div id="view-account" class="hidden space-y-6">
+      <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-xs space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-400/40 text-amber-700 flex items-center justify-center font-black text-xl">
+              YE
+            </div>
+            <div>
+              <h2 class="text-lg font-black text-slate-900">يوسف عيسى (Joey)</h2>
+              <p class="text-xs text-amber-700 font-semibold">عضو معتمد بمجتمع Vortex التنفيذي</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-right">
+              <span class="text-[10px] text-slate-400 block font-bold">رقم الطالب الأكاديمي</span>
+              <span class="text-sm font-mono font-black text-slate-900">VRTX-8942-EG</span>
+            </div>
+            <button onclick="navigator.clipboard.writeText('VRTX-8942-EG'); alert('تم نسخ رقم الطالب بنجاح!')" class="p-3 rounded-xl bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 transition-colors" title="نسخ الكود">
+              <i class="fa-regular fa-copy"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-sm font-black text-slate-900 uppercase tracking-wide">البرامج المسجلة الخاصة بي</h3>
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-bold text-slate-900">دبلومة تأسيس وتوسيع الشركات الناشئة</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">تم القبول ✓</span>
+              </div>
+              <div class="text-xs text-slate-500">نسبة التقدم: 65% • باقي 4 محاضرات لاجتياز الدبلومة واستلام الشهادة</div>
+            </div>
+            <button onclick="switchTab('player')" class="px-5 py-2.5 rounded-xl bg-[#12203D] text-[#E8A324] font-bold text-xs shadow-2xs">
+              متابعة المشاهدة الآن
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function switchTab(tabId) {
+      ['home', 'camps', 'player', 'account'].forEach(id => {
+        document.getElementById(`view-${id}`).classList.add('hidden');
+        const btn = document.getElementById(`tab-btn-${id}`);
+        btn.classList.remove('bg-[#12203D]', 'text-[#E8A324]');
+        btn.classList.add('bg-white', 'text-slate-700');
+      });
+
+      document.getElementById(`view-${tabId}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+      activeBtn.classList.remove('bg-white', 'text-slate-700');
+      activeBtn.classList.add('bg-[#12203D]', 'text-[#E8A324]');
+    }
+
+    function bookProgram(title, price) {
+      const p = price === 0 ? "مجاني" : `${price} ج.م`;
+      alert(`تم تسجيل طلب حجزك بنجاح في:\n"${title}"\nالقيمة: ${p}\nكود الطالب: VRTX-8942-EG\nسيتم إرسال موعد البدء وتفاصيل الحضور عبر الواتساب!`);
+    }
+
+    function setLecture(title) {
+      document.getElementById('player-title').innerText = title;
+      alert(`تم تحميل: ${title}`);
+    }
+  </script>
+</body>
+</html>

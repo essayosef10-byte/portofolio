@@ -1,0 +1,296 @@
+.admin-approvals {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+  width: 100%;
+}
+
+.admin-approvals__header h1 {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.admin-approvals__subtitle {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.admin-approvals__message {
+  text-align: center;
+  color: var(--muted);
+  padding: 24px 0;
+}
+
+.admin-approvals__message--error {
+  color: var(--false);
+}
+
+.admin-approvals__back {
+  margin-bottom: 14px;
+}
+
+.submissions-review {
+  margin-top: 4px;
+}
+
+.submissions-review__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.submissions-review__approve {
+  width: auto;
+  margin-top: 0;
+  padding: 8px 20px;
+}
+
+.request-card__top {
+  justify-content: space-between;
+}
+
+.admin-approvals__banner {
+  background-color: var(--true-bg);
+  color: var(--true);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.admin-approvals__banner--error {
+  background-color: var(--false-bg);
+  color: var(--false);
+}
+
+/* ملحوظة: .count-badge بقت معرّفة مركزيًا في index.css (كانت مستخدمة
+   في صفحة "تحديد موقع دكتور" كمان بدون أي تعريف أصلاً — باگ اتصلح). */
+
+/* ============ قايمة الأسابيع تحت المراجعة، مجمّعة حسب المندوب ============ */
+
+.week-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rep-group {
+  margin-top: 22px;
+}
+
+.rep-group:first-child {
+  margin-top: 8px;
+}
+
+.rep-group__title {
+  font-size: 16px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+}
+
+.rep-group__items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.week-list__item {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 4px;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 14px 16px;
+  cursor: pointer;
+  text-align: right;
+  font-family: inherit;
+  transition:
+    box-shadow var(--transition-base),
+    border-color var(--transition-base),
+    transform var(--transition-fast);
+}
+
+.week-list__item:hover {
+  border-color: var(--ink);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.week-list__item:active {
+  transform: translateY(0);
+}
+
+.week-list__item:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.week-list__week {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.week-list__date {
+  font-size: 12.5px;
+  color: var(--muted);
+  min-width: 0;
+}
+
+/* ============ تفاصيل مراجعة أسبوع واحد ============ */
+
+.week-review {
+  margin-top: 8px;
+}
+
+.week-review__back {
+  margin-bottom: 14px;
+}
+
+.week-review__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.week-review__title-row h2 {
+  font-size: 17px;
+  margin: 0;
+}
+
+.week-review__actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.week-review__approve {
+  width: auto;
+  margin-top: 0;
+  padding: 10px 24px;
+}
+
+.week-review__day {
+  margin-top: 14px;
+}
+
+.week-review__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ============ بطاقة دكتور للعرض بس (بدون أزرار) ============ */
+
+.request-card {
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-3) var(--space-4);
+  transition:
+    box-shadow var(--transition-base),
+    border-color var(--transition-base),
+    transform var(--transition-fast);
+}
+
+.request-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--muted-light);
+  transform: translateY(-1px);
+}
+
+.request-card__top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 4px;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.request-card__doctor {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.request-card__meta {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.request-card__meta a {
+  color: var(--accent-blue-dark);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition-fast);
+}
+
+.request-card__meta a:hover,
+.request-card__meta a:focus-visible {
+  border-bottom-color: var(--accent-blue-dark);
+}
+
+/* ============ صندوق تأكيد رفض الأسبوع ============ */
+
+.reject-box {
+  margin-top: 4px;
+  margin-bottom: 16px;
+  background-color: var(--false-bg);
+  border-radius: var(--radius-card);
+  padding: 14px 16px;
+}
+
+.reject-box__warning {
+  color: var(--false);
+  font-size: 13.5px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.reject-box__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* ملحوظة: .btn-outline الأساسي بقى معرّف مركزيًا في index.css. */
+
+/* .admin-approvals__tabs/.day-tabs base + hover/active states now come
+   from index.css. Only this page's margin/tab sizing deltas stay here. */
+.admin-approvals__tabs {
+  margin: 14px 0 18px;
+}
+
+.day-tabs {
+  margin: 0 0 12px;
+}
+
+.day-tabs__tab {
+  padding: 8px 14px;
+  font-size: 13.5px;
+}
+
+.admin-approvals__message--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 0;
+}
+
+

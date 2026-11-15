@@ -1,0 +1,265 @@
+.rep-dashboard {
+  min-height: 100vh;
+  background: var(--paper);
+  font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+  color: var(--ink);
+  padding: var(--space-5) var(--space-3) var(--space-6);
+  box-sizing: border-box;
+}
+
+.rep-dashboard * {
+  box-sizing: border-box;
+}
+
+.rep-dashboard__header {
+  max-width: 680px;
+  margin: 0 auto var(--space-4);
+}
+
+.rep-dashboard__header .page-header {
+  margin-bottom: 0;
+}
+
+.rep-dashboard__today-label {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.rep-dashboard__start-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin: 6px 0 0 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--amber-dark);
+  background: var(--amber-bg);
+  border-radius: var(--radius-pill);
+  padding: 3px 10px;
+}
+
+.rep-dashboard__day-nav {
+  max-width: 680px;
+  margin: 0 auto var(--space-4);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  background-color: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 6px;
+  box-shadow: var(--shadow-card);
+}
+
+.rep-dashboard__day-nav .btn-outline {
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+  border-color: transparent;
+}
+
+.rep-dashboard__day-nav .btn-outline:hover:not(:disabled) {
+  background-color: var(--paper);
+}
+
+.rep-dashboard__banner {
+  max-width: 680px;
+  margin: 0 auto var(--space-3);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.rep-dashboard__banner--info {
+  background-color: var(--amber-bg);
+  color: var(--amber);
+}
+
+/* شبكة الإحصائيات — بديل بصري أرقى لصف الـ badges القديم */
+
+.rep-dashboard__summary {
+  max-width: 680px;
+  margin: 0 auto var(--space-4);
+}
+
+.rep-dashboard__summary .stat-grid {
+  margin-bottom: 0;
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+}
+
+.rep-dashboard__message {
+  max-width: 680px;
+  margin: 0 auto var(--space-4);
+}
+
+.rep-dashboard__message--error {
+  color: var(--false);
+}
+
+.rep-dashboard__list {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.doctor-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 16px var(--space-4);
+  padding-inline-start: 20px;
+  text-align: right;
+  font-family: inherit;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-fast);
+}
+
+.doctor-card::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--card-status-accent, var(--line));
+}
+
+.doctor-card:hover {
+  border-color: var(--ink);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.doctor-card:active {
+  transform: translateY(0);
+}
+
+.doctor-card:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.doctor-card--readonly {
+  cursor: default;
+}
+
+.doctor-card--readonly:hover {
+  border-color: var(--line);
+  box-shadow: none;
+  transform: none;
+}
+
+.doctor-card__class {
+  margin-right: 8px;
+  font-size: 11px;
+  padding: 2px 8px;
+  vertical-align: middle;
+}
+
+.doctor-card__info {
+  min-width: 0;
+}
+
+.doctor-card__name {
+  margin: 0 0 6px;
+  font-size: var(--text-md);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.doctor-card__specialty {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 0 3px;
+  font-size: 13px;
+  color: var(--brand-ink-dark);
+  font-weight: 500;
+}
+
+.doctor-card__specialty svg,
+.doctor-card__address svg {
+  flex-shrink: 0;
+  color: var(--muted-light);
+}
+
+.doctor-card__address {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  overflow: hidden;
+}
+
+.doctor-card__address span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.doctor-card__notes {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  color: var(--muted);
+  background: var(--paper);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+}
+
+.doctor-card__status {
+  flex-shrink: 0;
+}
+
+.visit-status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.visit-status-chip--green {
+  background: var(--true-bg);
+  color: var(--true);
+}
+
+.visit-status-chip--red {
+  background: var(--false-bg);
+  color: var(--false);
+}
+
+.visit-status-chip--gray {
+  background: var(--neutral-bg);
+  color: var(--muted);
+}
+
+/* بيربط لون الشريط الجانبي لكل كارت دكتور بحالة الزيارة، من غير ما
+   نلمس منطق الـ status نفسه — مجرد قراءة نفس القيمة اللي already بتتحسب. */
+.doctor-card[data-status="true_visit"] { --card-status-accent: var(--true); }
+.doctor-card[data-status="false_visit"] { --card-status-accent: var(--false); }
+.doctor-card[data-status="pending"] { --card-status-accent: var(--line); }
+
+@media (max-width: 380px) {
+  .doctor-card {
+    padding: 14px;
+    padding-inline-start: 18px;
+  }
+}

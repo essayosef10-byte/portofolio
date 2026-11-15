@@ -1,0 +1,152 @@
+/* ============================================================
+   CEO by Vortex — design tokens
+   Ported from the approved CEO_Vortex_Preview(3).html mockup.
+   Themes switch via [data-theme] on <html> ('dark' | 'light'):
+   it follows the device's dark/light mode until the user toggles
+   manually (see theme-boot.js / ThemeContext.js).
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+
+  /* Core palette — dark theme (default) */
+  --bg: #07132f;
+  --bg2: #0b1c42;
+  --ink: #f2f6ff;
+  --muted: #a8b7d4;
+  --line: rgba(168, 190, 235, 0.19);
+  --panel: rgba(10, 25, 59, 0.88);
+  --accent: #54cfff;
+  --royal: #477eff;
+  --glow: rgba(58, 169, 255, 0.25);
+  --header-bg: rgba(7, 19, 47, 0.62);
+  --scrim-bg: rgba(1, 7, 23, 0.55);
+
+  /* Brand anchors kept for the design-system page */
+  --color-navy: #0a1a4a;
+  --color-royal: #477eff;
+  --color-cyan: #54cfff;
+  --color-paper: #f4f7fc;
+
+  /* Typography */
+  --display: 'Manrope', 'DM Sans', 'Noto Naskh Arabic', sans-serif;
+  --body: 'DM Sans', 'IBM Plex Sans Arabic', system-ui, -apple-system,
+    'Segoe UI', sans-serif;
+  --header-h: 88px;
+  /* part-A: hero text, desktop (1101px and up) */
+  --text-hero: clamp(2.6rem, 4.1vw, 4.6rem);
+  --text-sub: clamp(1.15rem, 1.7vw, 1.7rem);
+  --text-body: clamp(1rem, 1.35vw, 1.3rem);
+  --hero-lh: 1.15;
+  --copy-w: min(980px, 62%);
+  --sub-mt: 26px;
+  /* part-C: page title on the inner pages, about +30% */
+  --text-h1: clamp(2.45rem, 1.95rem + 2.1vw, 3.6rem);
+  --text-marquee: clamp(1rem, 1.7vw, 1.4rem);
+  --text-small: 0.875rem;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.45);
+  --drawer-shadow: -25px 0 80px rgba(0, 0, 0, 0.12);
+
+  /* Easing */
+  --ease: cubic-bezier(0.2, 0.75, 0.2, 1);
+
+  /* Z-index layers */
+  --z-background: 0;
+  --z-content: 2;
+  --z-header: 10;
+  --z-backdrop: 30;
+  --z-sidebar: 31;
+
+  /* Motion */
+  --marquee-duration: 16s;
+  --float-duration: 14s;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f4f7fc;
+  --bg2: #eaf1fb;
+  --ink: #0a1940;
+  --muted: #526486;
+  --line: rgba(12, 35, 83, 0.16);
+  --panel: rgba(250, 252, 255, 0.94);
+  --accent: #087eb9;
+  --royal: #285bd3;
+  --glow: rgba(42, 121, 223, 0.15);
+  --header-bg: rgba(244, 247, 252, 0.72);
+  --scrim-bg: rgba(16, 30, 62, 0.4);
+  --shadow-md: 0 4px 14px rgba(10, 26, 74, 0.12);
+  --drawer-shadow: -25px 0 80px rgba(10, 26, 74, 0.14);
+}
+
+/* Arabic switches the display and body stacks */
+html[lang='ar'] {
+  --display: 'Noto Naskh Arabic', 'Manrope', 'DM Sans', serif;
+}
+
+html[lang='ar'] body {
+  font-family: 'IBM Plex Sans Arabic', var(--body);
+}
+
+/* part-A: hero text, tablet */
+@media (min-width: 761px) and (max-width: 1100px) {
+  :root {
+    --text-hero: clamp(2.4rem, 5.2vw, 3.6rem);
+    --text-sub: clamp(1.2rem, 2.4vw, 1.5rem);
+    --text-body: clamp(1rem, 2vw, 1.2rem);
+    --hero-lh: 1.15;
+    --copy-w: min(760px, 72%);
+    --sub-mt: 22px;
+  }
+}
+
+/* part-A: hero text, mobile.
+   --spiral-top is where the top edge of the vortex lands (same geometry the canvas
+   uses on narrow screens), so the copy can sit a fixed gap above it. */
+@media (max-width: 760px) {
+  :root {
+    --header-h: 60px;
+    --fold-h: max(470px, calc(100svh - var(--header-h)));
+    --spiral-top: calc(
+      var(--fold-h) * 0.64 - min(62vw, calc(var(--fold-h) * 0.62)) * 0.72 - 6px
+    );
+    --text-hero: clamp(
+      1.3rem,
+      min(9.5vw, 5.6vh, calc((var(--spiral-top) - 34px) / 8.4)),
+      3.1rem
+    );
+    --text-sub: clamp(1.1rem, 4.6vw, 1.35rem);
+    --text-body: clamp(0.95rem, 4vw, 1.1rem);
+    --hero-lh: 1.12;
+    --copy-w: 100%;
+    --sub-mt: 18px;
+  }
+}
+
+/* part-A: short phones (about 640px tall). Not enough room above the vortex for the full
+   sizes, so the supporting text steps down while the headline keeps fitting. */
+@media (max-width: 760px) and (max-height: 700px) {
+  :root {
+    --text-sub: clamp(0.95rem, 4vw, 1.1rem);
+    --text-body: clamp(0.85rem, 3.5vw, 0.95rem);
+    --sub-mt: 12px;
+  }
+}
