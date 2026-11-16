@@ -324,7 +324,7 @@
             <i class="fa-solid fa-briefcase"></i> <span data-i18n="sec_subtitle">معرض الأعمال والمشاريع الحية</span>
           </div>
           <h2 class="text-3xl font-black text-slate-900 tracking-tight" data-i18n="sec_title">
-            6 مشاريع حقيقية متكاملة
+            7 مشاريع حقيقية متكاملة
           </h2>
           <p class="text-sm text-slate-600 font-medium max-w-2xl" data-i18n="sec_desc">
             معاينة لواجهة كل موقع، وشرح مباشر للهدف منه وما تم في الواجهة والباك إند، مع زر "تجربة تفاعلية" لتجربة الواجهة ببيانات تجريبية، وروابط الأنظمة الحقيقية.
@@ -334,10 +334,10 @@
         <!-- Filter Buttons -->
         <div class="flex flex-wrap items-center gap-2">
           <button onclick="filterProjects('all', this)" class="filter-btn active px-4 py-2 rounded-xl text-xs font-bold bg-brand-600 text-white shadow-sm transition-all" data-i18n="filter_all">
-            الكل (6)
+            الكل (7)
           </button>
           <button onclick="filterProjects('completed', this)" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 transition-all" data-i18n="filter_completed">
-            جاهز للإنتاج (2)
+            جاهز للإنتاج (3)
           </button>
           <button onclick="filterProjects('dev', this)" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 transition-all" data-i18n="filter_dev">
             قيد التطوير والتوسعة (3)
@@ -983,6 +983,136 @@
 
         </div>
 
+        <!-- 7. VORTEX CGM & CPM (HealthTech / Medical SaaS) -->
+        <div class="project-card bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all flex flex-col justify-between space-y-6" data-project-id="vortex-cgm" data-category="completed">
+          
+          <div class="space-y-5">
+            
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span data-i18n="p7_status">🟢 مكتمل • جاهز للاستخدام السريري</span>
+              </span>
+              <span class="text-xs font-mono font-bold text-slate-400">HealthTech / Medical SaaS</span>
+            </div>
+
+            <!-- Visual UI Browser Mockup -->
+            <div class="preview-frame rounded-2xl border border-slate-200/80 bg-slate-900 overflow-hidden shadow-sm">
+              <div class="bg-slate-800/95 px-4 py-2.5 flex items-center justify-between border-b border-slate-700">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                </div>
+                <div class="domain-bar px-3 py-0.5 rounded-md bg-slate-900/80 text-[10px] font-mono text-slate-300 flex items-center gap-1">
+                  <i class="fa-solid fa-lock text-[8px] text-blue-400"></i>
+                  <span class="domain-text">cgm.vortex.eg</span>
+                </div>
+                <span class="text-[10px] text-slate-400 font-mono">React PWA</span>
+              </div>
+              
+              <div class="bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950/60 p-4 text-white space-y-3">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center font-black text-xs">
+                      <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <div>
+                      <div class="text-xs font-bold">Vortex CGM & CPM • المنظومة الذكية</div>
+                      <div class="text-[10px] text-slate-400">متابعة السكري وضغط الدم والمساعد "نبض"</div>
+                    </div>
+                  </div>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold border border-emerald-500/30 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>النطاق المستهدف 88%</span>
+                  </span>
+                </div>
+
+                <!-- Mini Metrics Grid -->
+                <div class="grid grid-cols-2 gap-2 text-center">
+                  <div class="bg-slate-800/80 p-2.5 rounded-xl border border-slate-700">
+                    <div class="text-[10px] text-slate-400 font-medium">سكر الدم الحالي (CGM)</div>
+                    <div class="text-base font-black text-white font-mono mt-0.5">118 <span class="text-[10px] text-slate-400">mg/dL</span></div>
+                    <span class="text-[8px] px-1 rounded bg-emerald-400/20 text-emerald-300 font-bold block mt-0.5">🟢 مستقر وطبيعي</span>
+                  </div>
+                  <div class="bg-slate-800/80 p-2.5 rounded-xl border border-slate-700">
+                    <div class="text-[10px] text-slate-400 font-medium">ضغط الدم والنبض (CPM)</div>
+                    <div class="text-base font-black text-white font-mono mt-0.5">120/80 <span class="text-[10px] text-slate-400">mmHg</span></div>
+                    <span class="text-[8px] px-1 rounded bg-blue-400/20 text-blue-300 font-bold block mt-0.5">نبض 74 • مثالي</span>
+                  </div>
+                </div>
+
+                <div class="bg-slate-950/60 p-2 rounded-xl border border-slate-800 flex items-center justify-between text-[10px]">
+                  <span class="text-slate-300"><i class="fa-solid fa-shield-heart text-rose-400 ml-1"></i> بروتوكول طوارئ هبوط السكر (123) مدمج</span>
+                  <span class="text-emerald-400 font-bold">أوفلاين IndexedDB</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-bold text-slate-900" data-i18n="p7_title">منظومة Vortex CGM & CPM لمتابعة السكري وضغط الدم</h3>
+              <p class="text-xs text-brand-600 font-bold mt-0.5" data-i18n="p7_sub">منصة طبية تفاعلية مع المساعد الصحي الذكي "نبض" وقواعد أمان سريرية</p>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2">
+              <div class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                <i class="fa-solid fa-bullseye text-brand-600"></i>
+                <span data-i18n="p_goal_title">هدف المنظومة والمشكلة التي تحلها:</span>
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed font-medium" data-i18n="p7_goal">
+                نظام طبي متقدم لمتابعة مرضى السكري وارتفاع ضغط الدم، يتيح تسجيل القراءات لحظياً مع العمل الكامل بدون إنترنت (Offline-First)، ويتضمن قواعد أمان سريرية تطلق إنذار طوارئ فوري وزر اتصال بالإسعاف (123) عند هبوط السكر الحاد (&lt; 54 mg/dL)، مع مساعد صحي ذكي "نبض" لتوجيه الوجبات ونمط الحياة دون المساس بالجرعات الطبية.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="bg-blue-50/50 p-3 rounded-xl border border-blue-100 space-y-1">
+                <div class="font-bold text-blue-900 flex items-center gap-1.5">
+                  <i class="fa-solid fa-desktop text-brand-600"></i>
+                  <span data-i18n="p_front_label">الواجهة الأمامية (Frontend):</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-normal" data-i18n="p7_front">
+                  تطبيق PWA تفاعلي بـ React و Tailwind مع دعم كامل للأوفلاين بـ IndexedDB، رسوم بيانية مستمرة لـ 24 ساعة، ومؤقت أوتوماتيكي لقاعدة الـ 15 دقيقة لهبوط السكر.
+                </p>
+              </div>
+
+              <div class="bg-indigo-50/50 p-3 rounded-xl border border-indigo-100 space-y-1">
+                <div class="font-bold text-indigo-900 flex items-center gap-1.5">
+                  <i class="fa-solid fa-server text-indigo-600"></i>
+                  <span data-i18n="p_back_label">الباك إند وقواعد البيانات:</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-normal" data-i18n="p7_back">
+                  قاعدة بيانات Supabase PostgreSQL مشفرة، ومحرك فحص سريري صارم (Clinical Guardrails) يمنع تقديم أي وصفات طبية خاطئة، ونظام تصدير تقارير العيادة للطبيب.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-xs font-mono text-slate-700 font-semibold">React PWA</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-xs font-mono text-slate-700 font-semibold">IndexedDB Offline</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-xs font-mono text-slate-700 font-semibold">Clinical Guardrails</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-xs font-mono text-slate-700 font-semibold">Supabase</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-xs font-mono text-slate-700 font-semibold">Nabdh AI Assistant</span>
+            </div>
+
+          </div>
+
+          <div class="space-y-2 pt-4 border-t border-slate-100">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 project-actions-container">
+              <a href="./demos/vortex-cgm/index.html" target="_blank" class="w-full py-2.5 px-3 rounded-xl btn-gradient text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm text-center">
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                <span data-i18n="btn_view_demo">تجربة تفاعلية (بيانات تجريبية)</span>
+              </a>
+              <div class="secondary-action-slot"></div>
+            </div>
+            <div class="guest-credentials-container hidden text-[11px] font-mono bg-slate-50 p-2 rounded-lg border border-slate-200 text-slate-600 flex items-center justify-between"></div>
+            <button onclick="openModal('vortex-cgm')" class="w-full py-2 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all">
+              <i class="fa-solid fa-code-branch text-brand-600"></i>
+              <span data-i18n="btn_tech_details">تفاصيل البنية والـ Backend</span>
+            </button>
+          </div>
+
+        </div>
+
         <!-- 6. YARA SHOP -->
         <div class="project-card bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all flex flex-col justify-between space-y-6" data-project-id="yara-shop" data-category="prototype">
           
@@ -1091,6 +1221,129 @@
             </div>
             <div class="guest-credentials-container hidden text-[11px] font-mono bg-slate-50 p-2 rounded-lg border border-slate-200 text-slate-600 flex items-center justify-between"></div>
             <button onclick="openModal('yara-shop')" class="w-full py-2 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all">
+              <i class="fa-solid fa-code-branch text-brand-600"></i>
+              <span data-i18n="btn_tech_details">تفاصيل البنية والـ Backend</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- 7. VORTEX CGM & CPM -->
+        <div class="project-card bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all flex flex-col justify-between space-y-6" data-project-id="vortex-cgm" data-category="completed">
+          
+          <div class="space-y-5">
+            
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span data-i18n="p7_status">🟢 تطبيق حي منشور ومكتمل</span>
+              </span>
+              <span class="text-xs font-mono font-bold text-slate-400">HealthTech / AI Platform</span>
+            </div>
+
+            <!-- Visual Preview -->
+            <div class="preview-frame rounded-2xl border border-slate-200/80 bg-slate-900 overflow-hidden shadow-sm">
+              <div class="bg-slate-800/95 px-4 py-2.5 flex items-center justify-between border-b border-slate-700">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                </div>
+                <div class="domain-bar px-3 py-0.5 rounded-md bg-slate-900/80 text-[10px] font-mono text-slate-300 flex items-center gap-1">
+                  <i class="fa-solid fa-lock text-[8px] text-emerald-400"></i>
+                  <span class="domain-text">vortex-cgm.vercel.app</span>
+                </div>
+                <span class="text-[10px] text-slate-400 font-mono">React 18 • Supabase</span>
+              </div>
+              
+              <div class="bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950/60 p-4 text-white space-y-3">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-xl bg-blue-600/30 border border-blue-400/40 flex items-center justify-center text-blue-400 text-sm font-black">
+                      <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <div>
+                      <div class="text-[10px] text-blue-400 font-mono font-bold uppercase">Continuous Glucose & Pressure Monitoring</div>
+                      <div class="text-sm font-black text-white">VORTEX CGM & CPM • AI Platform</div>
+                    </div>
+                  </div>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold">
+                    المساعد نبض متصل
+                  </span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 text-[10px]">
+                  <div class="bg-slate-800/80 p-2 rounded-lg border border-slate-700 flex justify-between items-center">
+                    <span class="text-slate-300">متوسط السكر (TIR)</span>
+                    <span class="font-bold text-emerald-400">82% ضمن النطاق</span>
+                  </div>
+                  <div class="bg-slate-800/80 p-2 rounded-lg border border-slate-700 flex justify-between items-center">
+                    <span class="text-slate-300">متوسط الضغط</span>
+                    <span class="font-bold text-blue-400">120/80 mmHg</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-bold text-slate-900" data-i18n="p7_title">منظومة VORTEX CGM & CPM للمتابعة المستمرة مع المساعد السريري الذكي</h3>
+              <p class="text-xs text-brand-600 font-bold mt-0.5" data-i18n="p7_sub">منصة طبية متكاملة لمتابعة مرضى السكري وضغط الدم مع مزامنة سحابية وبناء أوفلاين</p>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2">
+              <div class="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                <i class="fa-solid fa-bullseye text-brand-600"></i>
+                <span data-i18n="p_goal_title">هدف المنظومة والمشكلة التي تحلها:</span>
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed font-medium" data-i18n="p7_goal">
+                نظام صحي شامل صُمم خصيصاً لمرضى السكري والضغط؛ يتيح تسجيل القراءات بدون إنترنت عبر IndexedDB مع مزامنة سحابية فور الاتصال بقاعدة Supabase، ومساعد سريري ذكي "نبض" لتقييم الوجبات وجرعات الأكل بالعامية والإنجليزية، وتقارير طبية جاهزة للأطباء.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="bg-blue-50/50 p-3 rounded-xl border border-blue-100 space-y-1">
+                <div class="font-bold text-blue-900 flex items-center gap-1.5">
+                  <i class="fa-solid fa-desktop text-brand-600"></i>
+                  <span data-i18n="p_front_label">الواجهة الأمامية (Frontend):</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-normal" data-i18n="p7_front">
+                  تطبيق React 18 و Vite فائق السرعة، دعم ثنائي اللغة كامل، رسوم بيانية تفاعلية بـ Recharts، وواجهة مريحة ومناسبة لكبار السن.
+                </p>
+              </div>
+
+              <div class="bg-indigo-50/50 p-3 rounded-xl border border-indigo-100 space-y-1">
+                <div class="font-bold text-indigo-900 flex items-center gap-1.5">
+                  <i class="fa-solid fa-server text-indigo-600"></i>
+                  <span data-i18n="p_back_label">الباك إند وقواعد البيانات:</span>
+                </div>
+                <p class="text-[11px] text-slate-600 leading-normal" data-i18n="p7_back">
+                  محرك سريري ذكي محلي للذكاء الاصطناعي، قاعدة بيانات Supabase (PostgreSQL) مع Row Level Security ونظام مصادقة وتأكيد بريد موثق عبر SendGrid SMTP.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-xs font-mono text-slate-700 font-semibold">React 18</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-xs font-mono text-slate-700 font-semibold">Supabase (PostgreSQL)</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-xs font-mono text-slate-700 font-semibold">Offline-First (IndexedDB)</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-xs font-mono text-slate-700 font-semibold">AI Clinical Assistant</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 text-xs font-mono text-slate-700 font-semibold">Vercel Production</span>
+            </div>
+
+          </div>
+
+          <div class="space-y-2 pt-4 border-t border-slate-100">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 project-actions-container">
+              <a href="https://vortex-cgm.vercel.app" target="_blank" class="w-full py-2.5 px-3 rounded-xl btn-gradient text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm text-center">
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                <span>تصفح الموقع الحي (Live App)</span>
+              </a>
+              <a href="https://github.com/essayosef10-byte/Vortex-cgm" target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm text-center transition">
+                <i class="fa-brands fa-github text-[11px]"></i>
+                <span>كود المشروع (GitHub)</span>
+              </a>
+            </div>
+            <button onclick="openModal('vortex-cgm')" class="w-full py-2 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-600 font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all">
               <i class="fa-solid fa-code-branch text-brand-600"></i>
               <span data-i18n="btn_tech_details">تفاصيل البنية والـ Backend</span>
             </button>
@@ -1532,6 +1785,13 @@
 
       // 3. بيانات المشاريع الـ 6 (املاها بروابطك وفيديوهاتك الحقيقية)
       projects: {
+        "vortex-cgm": {
+          realUrl: "",                                  // رابط المنظومة الحقيقية لو متوفر
+          requiresLogin: false,                         // متاح للاستخدام
+          videoUrl: "",
+          guestCredentials: null,
+          domainDisplay: "cgm.vortex.eg"
+        },
         "field-crm": {
           realUrl: "https://crm-delta-ruby.vercel.app/", // الرابط الحقيقي
           requiresLogin: true,                          // هل يتطلب تسجيل دخول؟
@@ -1579,6 +1839,16 @@
           videoUrl: "",
           guestCredentials: null,
           domainDisplay: ""
+        },
+        "vortex-cgm": {
+          realUrl: "https://vortex-cgm.vercel.app",
+          requiresLogin: false,
+          videoUrl: "",
+          guestCredentials: {
+            username: "demo@vortex-cgm.local",
+            password: "متاح الدخول المباشر (Demo Mode)"
+          },
+          domainDisplay: "vortex-cgm.vercel.app"
         }
       }
     };
@@ -1609,10 +1879,10 @@
         hero_btn_explore: 'استعراض المشاريع والتجارب التفاعلية',
         hero_btn_whatsapp: 'تواصل مباشر عبر واتساب',
         sec_subtitle: 'معرض الأعمال والمشاريع الحية',
-        sec_title: '6 مشاريع حقيقية متكاملة',
+        sec_title: '7 مشاريع حقيقية متكاملة',
         sec_desc: 'معاينة لواجهة كل موقع، وشرح مباشر للهدف منه وما تم في الواجهة والباك إند، مع زر "تجربة تفاعلية" لتجربة الواجهة ببيانات تجريبية، وروابط الأنظمة الحقيقية.',
-        filter_all: 'الكل (6)',
-        filter_completed: 'جاهز للإنتاج (2)',
+        filter_all: 'الكل (7)',
+        filter_completed: 'جاهز للإنتاج (3)',
         filter_dev: 'قيد التطوير والتوسعة (3)',
         filter_proto: 'نموذج أولي متجر (1)',
         sample_badge: 'بيانات تجريبية',
@@ -1659,6 +1929,18 @@
         p6_goal: 'متجر إلكتروني مصمم لأصحاب البراندات والمحلات المحلية لتسهيل بيع الملابس والأزياء أونلاين، يحتوي على فلترة سريعة حسب نوع القماش، وسلة تسوق تحسب مصاريف التوصيل للقاهرة والجيزة والمحافظات تلقائياً.',
         p6_front: 'فلترة سريعة بالأقمشة (شيفون، كريب، جيرسي)، سلة تسوق مع تعديل الكميات وتطبيق كوبونات الخصم، وتصميم أنيق وجذاب للعميل.',
         p6_back: 'إدارة الحالة والمخزون، وتنبيهات القطع المتبقية، وحساب الضريبة والشحن ديناميكياً.',
+        p7_status: '🟢 تطبيق حي منشور ومكتمل',
+        p7_title: 'منظومة VORTEX CGM & CPM للمتابعة المستمرة مع المساعد السريري الذكي',
+        p7_sub: 'منصة طبية متكاملة لمتابعة مرضى السكري وضغط الدم مع مزامنة سحابية وبناء أوفلاين',
+        p7_goal: 'نظام صحي شامل صُمم خصيصاً لمرضى السكري والضغط؛ يتيح تسجيل القراءات بدون إنترنت عبر IndexedDB مع مزامنة سحابية فور الاتصال بقاعدة Supabase، ومساعد سريري ذكي "نبض" لتقييم الوجبات وجرعات الأكل بالعامية والإنجليزية، وتقارير طبية جاهزة للأطباء.',
+        p7_front: 'تطبيق React 18 و Vite فائق السرعة، دعم ثنائي اللغة كامل، رسوم بيانية تفاعلية بـ Recharts، وواجهة مريحة ومناسبة لكبار السن.',
+        p7_back: 'محرك سريري ذكي محلي للذكاء الاصطناعي، قاعدة بيانات Supabase (PostgreSQL) مع Row Level Security ونظام مصادقة وتأكيد بريد موثق عبر SendGrid SMTP.',
+        p7_status: '🟢 مكتمل • جاهز للاستخدام السريري',
+        p7_title: 'منظومة Vortex CGM & CPM لمتابعة السكري وضغط الدم',
+        p7_sub: 'منصة طبية تفاعلية مع المساعد الصحي الذكي "نبض" وقواعد أمان سريرية',
+        p7_goal: 'نظام طبي متقدم لمتابعة مرضى السكري وارتفاع ضغط الدم، يتيح تسجيل القراءات لحظياً مع العمل الكامل بدون إنترنت (Offline-First)، ويتضمن قواعد أمان سريرية تطلق إنذار طوارئ فوري وزر اتصال بالإسعاف (123) عند هبوط السكر الحاد (< 54 mg/dL)، مع مساعد صحي ذكي "نبض" لتوجيه الوجبات ونمط الحياة دون المساس بالجرعات الطبية.',
+        p7_front: 'تطبيق PWA تفاعلي بـ React و Tailwind مع دعم كامل للأوفلاين بـ IndexedDB، رسوم بيانية مستمرة لـ 24 ساعة، ومؤقت أوتوماتيكي لقاعدة الـ 15 دقيقة لهبوط السكر.',
+        p7_back: 'قاعدة بيانات Supabase PostgreSQL مشفرة، ومحرك فحص سريري صارم (Clinical Guardrails) يمنع تقديم أي وصفات طبية خاطئة، ونظام تصدير تقارير العيادة للطبيب.',
         about_tag: 'الملف التعريفي للشركات وأصحاب الأعمال',
         about_title: 'لماذا تختار العمل مع يوسف عيسى؟',
         about_p1: 'أنا لا أكتفي بكتابة الكود فقط، بل أركز أولاً على <strong>فهم هدف مشروعك التجاري</strong> وكيف سيتفاعل معه المستخدم العادي في السوق المصري والعربي. أحرص على أن يكون الموقع سريعاً جداً، بسيطاً في تصفحه، ويعمل بكفاءة على كافة أنواع الشاشات والموبايل.',
@@ -1737,10 +2019,10 @@
         hero_btn_explore: 'Explore Projects & Interactive Demos',
         hero_btn_whatsapp: 'Direct WhatsApp Chat',
         sec_subtitle: 'Curated Portfolio Showcase',
-        sec_title: '6 End-to-End Live Projects',
+        sec_title: '7 End-to-End Live Projects',
         sec_desc: 'A visual preview of each system, explicit problem-solving goals, and frontend/backend highlights, with interactive demos loaded with sample data and links to real systems.',
-        filter_all: 'All (6)',
-        filter_completed: 'Production Ready (2)',
+        filter_all: 'All (7)',
+        filter_completed: 'Production Ready (3)',
         filter_dev: 'In Development (3)',
         filter_proto: 'Storefront Prototype (1)',
         sample_badge: 'Sample Data',
@@ -1787,6 +2069,12 @@
         p6_goal: 'Designed for local fashion brands and boutiques to sell apparel online with instant fabric filtering, smart shopping cart, discount coupon engine, and delivery estimation.',
         p6_front: 'Instant client-side fabric filter, dynamic cart quantity counters, coupon code validation (YARA10), and clean typography.',
         p6_back: 'State management for cart items, low-stock alerts, and dynamic shipping calculation.',
+        p7_status: '🟢 Completed • Clinical Ready',
+        p7_title: 'Vortex CGM & CPM Smart Health Monitoring Platform',
+        p7_sub: 'Continuous Glucose & Blood Pressure Monitoring with Nabdh AI & Clinical Safety Guardrails',
+        p7_goal: 'An advanced digital health system for continuous diabetes and hypertension management. Features offline-first storage via IndexedDB, automated clinical safety guardrails triggering emergency protocols and Egyptian ambulance hotline (123) for acute hypoglycemia (< 54 mg/dL), paired with Nabdh AI lifestyle assistant without altering medication dosages.',
+        p7_front: 'Responsive React PWA with Tailwind CSS, 24-hour continuous glucose SVG curves, offline sync, and automated Rule-of-15 countdown timers.',
+        p7_back: 'Secure Supabase PostgreSQL backend, strict Clinical Guardrails triage engine preventing medical misuse, and clinic PDF report export.',
         about_tag: 'Profile for Clients & Businesses',
         about_title: 'Why Work With Yousef Eissa (Joey)?',
         about_p1: 'I don’t just write code; I focus first on <strong>understanding your business objectives</strong> and how your end-users will navigate the product. Every web application I deliver is tuned for blazing speed, intuitive simplicity, and 100% responsiveness on mobile devices.',
@@ -2171,6 +2459,34 @@
             'Shipping: Automated Egyptian governorates delivery rate calculator.'
           ],
           tech: ['Next.js 14', 'DTC E-Commerce', 'Cart Drawer', 'Tailwind CSS', 'Server Actions']
+        }
+      },
+      'vortex-cgm': {
+        ar: {
+          title: 'Vortex CGM & CPM • المنظومة الذكية لمتابعة السكري والضغط',
+          badge: '🟢 مكتمل وجاهز للإنتاج الطبي',
+          badgeColor: 'text-blue-700 bg-blue-50 border-blue-300',
+          overview: 'منصة طبية متكاملة لمتابعة قراءات السكري والضغط والنبض المستمر، مع مساعد ذكي "نبض" وقواعد أمان سريرية صارمة وتخزين أوفلاين كامل.',
+          highlights: [
+            'الواجهة والـ PWA: تطبيق ويب تقدمي (PWA) يعمل بدون إنترنت عبر IndexedDB مع مزامنة سحابية تلقائية.',
+            'قواعد الأمان السريرية (Guardrails): كشف هبوط السكر الحاد (< 54 mg/dL) وإطلاق إنذار الإسعاف 123 وقاعدة الـ 15 دقيقة.',
+            'المساعد الصحي "نبض": شات ذكي مدرب على تقديم نصائح الوجبات ونمط الحياة دون المساس بالجرعات الطبية.',
+            'التقارير الطبية: توليد وطباعة تقارير بيانية جاهزة للمراجعة مع الطبيب المعالج في العيادة.'
+          ],
+          tech: ['React', 'Vite PWA', 'IndexedDB', 'Supabase', 'Tailwind CSS', 'Clinical Guardrails', 'Nabdh AI']
+        },
+        en: {
+          title: 'Vortex CGM & CPM • Continuous Health Monitoring Platform',
+          badge: '🟢 Completed • Production Ready',
+          badgeColor: 'text-blue-700 bg-blue-50 border-blue-300',
+          overview: 'Continuous Glucose & Pressure Monitoring system with offline-first PWA architecture, Clinical Safety Guardrails, and Nabdh AI assistant.',
+          highlights: [
+            'Offline-First PWA: Full browser offline data persistence using IndexedDB with automated cloud sync to Supabase.',
+            'Clinical Guardrails: Rapid triage for severe hypoglycemia (< 54 mg/dL) with emergency hotline 123 prompts.',
+            'Nabdh AI Assistant: Lifestyle and dietary guidance tuned with medical safety boundaries.',
+            'Clinical Reports: Comprehensive PDF printout generator for physician visits.'
+          ],
+          tech: ['React', 'Vite PWA', 'IndexedDB', 'Supabase', 'Tailwind CSS', 'Clinical Guardrails', 'Nabdh AI']
         }
       },
       'yara-shop': {
